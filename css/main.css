@@ -1,0 +1,62 @@
+.gm-style h1{
+  background: rgb(238, 30, 123);
+  color: rgb(35, 31, 32);
+  padding:10px;
+}
+.gm-style p{
+  background: rgb(18, 167, 157);
+  color: #FFF;
+  margin-top: -18px;
+  padding: 10px 5px;
+}
+button.btn.btn-primary.btn-lg {
+    margin-top: -6px;
+    padding: 5px;
+    background: rgb(18, 167, 157);
+    border-color: rgb(18, 167, 157);
+}
+.helpArea {
+  text-align: center;
+}
+footer {
+  background:  #231f20;
+  height: 8vh;
+  color: #FFF;
+  text-align: center;
+}
+
+/*MODAL*/
+.modal-header {
+  background: #3c763d;
+  color: #FFF;
+  text-align: center;
+  border-bottom: none !important;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 2px 9px 1px rgba(0,0,0,.12),0 4px 2px -2px rgba(0,0,0,.2);
+}
+.modal-header h4 {
+  font-weight: 200 !important;
+  font-size: 2.5rem;
+}
+.modal-body {
+  height: 65vh;
+  border-bottom: none !important;
+}
+.modal-footer {
+  text-align: center;
+  border-top: none !important;
+}
+
+.modal-footer button {
+    display: block;
+    margin: 0px auto;
+    padding: 9px 60px;
+    border-radius: 1px !important;
+}
+.close {
+  font-weight: 500 !important;
+  font-size: 2.5em !important;
+}
+.modal-content {
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
