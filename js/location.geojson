@@ -1,0 +1,74 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#0080ff",
+        "marker-size": "medium",
+        "marker-symbol": "circle",
+        "name": "Bitwise",
+        "amenity": "Stadium",
+        "popupContent": "Bitwise"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.785874,
+          36.731962
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#da2565",
+        "marker-size": "medium",
+        "marker-symbol": "circle",
+        "name": "Fresno Arts Council",
+        "popupContent": "Fresno Arts Council"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.79222,
+          36.73729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#649b9a",
+        "marker-size": "medium",
+        "marker-symbol": "circle",
+        "name": "Fresno Cit Hall",
+        "popupContent": "Fresno City Hall"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.784619,
+          36.73962
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#2ed132",
+        "marker-size": "medium",
+        "marker-symbol": "circle",
+        "name": "African American Historical & Cultural Museum",
+        "popupContent": "African American Historical & Cultural Museum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.799831,
+          36.742689
+        ]
+      }
+    }
+  ]
+}
