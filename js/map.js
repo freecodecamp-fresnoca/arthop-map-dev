@@ -26,7 +26,7 @@ function myMap() {
   var map = new google.maps.Map(mapCanvas, mapOptions);
   var fultonMall = new google.maps.Marker({
       position:mapCenter,
-      icon: "img/mall.png"
+      icon: "images/mall.png"
       });
 
   fultonMall.setMap(map);

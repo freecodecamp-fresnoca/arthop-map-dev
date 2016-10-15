@@ -1,4 +1,4 @@
-{"venue":[
+[{"venue":[
     {"name":"Bitwise",
       "address":"700 Van Ness Ave",
       "latLng":[36.731962, -119.785874],
@@ -30,7 +30,7 @@
       "type":"Museum",
       "businessKey": "ARTNIGHTMUSEUM"
     },
-]}
+]}];
 /*
 Categories (venue.type)
 Gallery
