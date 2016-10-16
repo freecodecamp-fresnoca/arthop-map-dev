@@ -5,6 +5,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <meta name="robots" content="NOINDEX">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -88,7 +89,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/map.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=_INSERT_KEY_HERE_&callback=myMap"
+        type="text/javascript"></script>
         <!-- endbuild -->
 </body>
 </html>
