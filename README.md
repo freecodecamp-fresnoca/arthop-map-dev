@@ -10,3 +10,20 @@ Run `grunt` for building and `grunt serve` for preview.
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
+
+## JSON
+
+```
+** Categories (venue.type) **
+Gallery
+Museum
+Studio
+General Business
+General Organization
+School
+Government Building
+Food & Drink
+Entertainment
+Bar
+Site
+```

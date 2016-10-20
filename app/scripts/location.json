@@ -1,47 +1,48 @@
-{"venue":[
-    {"name":"Bitwise",
-      "address":"700 Van Ness Ave",
-      "latLng":[36.731962, -119.785874],
-      "type":"General Business",
-      "businessKey": "59DAYSOFAWESOME"
-    },
-    {"name":"Fresno Arts Council",
-      "address":"1245 Van Ness Ave",
-      "latLng":[36.737290, -119.792220],
-      "type":"General Organization",
-      "businessKey": "ROUNDTABLE"
-    },
-    {"name":"Tioga",
-      "address":"745 Fulton St",
-      "latLng":[36.730862, -119.788580],
-      "type":"Bar",
-      "businessKey": "99GOLDEN"
-    },
-    {"name":"Fresno City Hall",
-      "address":"2600 Fresno St",
-      "latLng":[36.739620, -119.784619],
-      "type":"Government Building",
-      "businessKey": "CITYHALLROCKS"
-    },
-    {"name":"African American Historical
-& Cultural Museum",
-      "address":"1857 Fulton Street",
-      "latLng":[36.742689, -119.799831],
-      "type":"Museum",
-      "businessKey": "ARTNIGHTMUSEUM"
-    },
-]}
-/*
-Categories (venue.type)
-Gallery
-Museum
-Studio
-General Business
-General Organization
-School
-Government Building
-Food & Drink
-Entertainment
-Bar
-Site
-*/
+{
+	"venues": [{
+		"name": "Bitwise",
+		"address": "700 Van Ness Ave",
+		"location": {
+			"lat": 36.731962,
+			"lng": -119.785874
+		},
+		"type": "General Business",
+		"businessKey": "59DAYSOFAWESOME"
+	}, {
+		"name": "Fresno Arts Council",
+		"address": "1245 Van Ness Ave",
+		"location": {
+			"lat": 36.737290,
+			"lng": -119.792220
+		},
+		"type": "General Organization",
+		"businessKey": "ROUNDTABLE"
+	}, {
+		"name": "Tioga",
+		"address": "745 Fulton St",
+		"location": {
+			"lat": 36.730862,
+			"lng": -119.788580
+		},
+		"type": "Bar",
+		"businessKey": "99GOLDEN"
+	}, {
+		"name": "Fresno City Hall",
+		"address": "2600 Fresno St",
+		"location": {
+			"lat": 36.739620,
+			"lng": -119.784619
+		},
+		"type": "Government Building",
+		"businessKey": "CITYHALLROCKS"
+	}, {
+		"name": "African American Historical & Cultural Museum",
+		"address": "1857 Fulton Street",
+		"location": {
+			"lat": 36.742689,
+			"lng": -119.799831
+		},
+		"type": "Museum",
+		"businessKey": "ARTNIGHTMUSEUM"
+	}]
+}

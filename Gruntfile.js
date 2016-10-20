@@ -70,8 +70,8 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
+        port: 8080,
+        // Change this to '0.0.0.0' to use it with CLOUD9 and to access outside.
         hostname: 'localhost',
         livereload: 35729
       },
