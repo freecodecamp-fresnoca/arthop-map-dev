@@ -40,6 +40,8 @@ function myMap() {
   var poly7 = new google.maps.LatLng(36.743337, -119.789315);
 
 
+
+
   var mapCenter = new google.maps.LatLng(36.733577, -119.789057);
   var mapCanvas = document.getElementById("map");
   var mapOptions = {center: mapCenter, zoom: 14};
