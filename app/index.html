@@ -33,33 +33,12 @@
 
           <header class="header">
             <h1 class="header__title">Arthop Map</h1>
-            <div class="helpArea">
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-              Help
-            </button>
-            </div>
+            <search-button></search-button>
           </header>
+          <search-modal></search-modal>
           <footer>
             <span><a href="http://www.meetup.com/Free-Code-Camp-Fresno/" target="_blank">Free Code Camp Fresno</a> for <a href="https://valleydevfest.com/" target="_blank">ValleyDevFest</a></span>
           </footer>
-
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Help</h4>
-                </div>
-                <div class="modal-body">
-                <p>This is the help section</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -88,7 +67,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/config.js"></script>
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/search/search.js"></script>
         <script src="scripts/map.js"></script>
         <!-- endbuild -->
 </body>

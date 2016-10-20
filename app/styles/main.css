@@ -98,7 +98,7 @@ button.btn.btn-primary.btn-lg {
     background: rgb(18, 167, 157);
     border-color: rgb(18, 167, 157);
 }
-.helpArea {
+.searchArea, .helpArea {
   text-align: center;
 }
 footer {
