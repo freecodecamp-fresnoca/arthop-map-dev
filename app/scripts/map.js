@@ -1,5 +1,4 @@
 var coords;
-var map;
 
 function CenterControl(controlDiv, map) {
 
@@ -95,7 +94,7 @@ function myMap() {
       // Setup the click event listeners: simply set the map to Chicago.
       centerControlDiv.addEventListener('click', function() {
         currentLocation();
-        map.setZoom(20)
+        map.setZoom(18)
       });
 
   var infowindow = new google.maps.InfoWindow({
