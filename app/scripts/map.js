@@ -55,7 +55,13 @@ function myMap() {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         }
+
         map.panTo(coords);
+        var personMarker = new google.maps.Marker({
+          position: {lat: coords.lat, lng: coords.lng},
+          map: map,
+          icon: "/images/person.png"
+        })
       }
 
       function error() {
@@ -73,10 +79,11 @@ function myMap() {
   }
 
   var fultonMall = new google.maps.Marker({
-      position:mapCenter,
-      icon: "images/mall.png",
-      map:map
+        position:mapCenter,
+        icon: "images/mall.png",
+        map:map
       });
+
       var centerControlDiv = document.createElement('div');
       var centerControl = new CenterControl(centerControlDiv, map);
       centerControlDiv.index = 1;
@@ -84,7 +91,7 @@ function myMap() {
       // Setup the click event listeners: simply set the map to Chicago.
       centerControlDiv.addEventListener('click', function() {
         currentLocation();
-        console.log(coords);
+        map.setZoom(20)
       });
 
   var infowindow = new google.maps.InfoWindow({
