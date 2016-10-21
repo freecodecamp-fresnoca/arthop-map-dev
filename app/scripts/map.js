@@ -1,4 +1,5 @@
 var coords;
+var map;
 
 function CenterControl(controlDiv, map) {
 
@@ -25,12 +26,11 @@ function CenterControl(controlDiv, map) {
       controlText.innerHTML = 'Center Map';
       controlUI.appendChild(controlText);
 
-
   }
 
 function myMap() {
 
-
+//Polygon parameters
   var poly1 = new google.maps.LatLng(36.743129, -119.800229);
   var poly2 = new google.maps.LatLng(36.742353, -119.803104);
   var poly3 = new google.maps.LatLng(36.743600, -119.801833);
@@ -41,10 +41,11 @@ function myMap() {
 
 
 
-
   var mapCenter = new google.maps.LatLng(36.733577, -119.789057);
   var mapCanvas = document.getElementById("map");
   var mapOptions = {center: mapCenter, zoom: 14};
+
+//CREATE MAP
   var map = new google.maps.Map(mapCanvas, mapOptions);
 
   function currentLocation() {
@@ -102,7 +103,14 @@ function myMap() {
   });
 
   cityPolygon.setMap(map);
+//infowindow.open(map,fultonMall);
+//mapData.getMarkers();
+//loadMarkers();
+// This is a function constructor:
 
+// This	creates a new object
+var mapDataObj = new mapData(map);
+    mapDataObj.getMarkers();
 
-infowindow.open(map,fultonMall);
+console.log(mapDataObj.getMarkers); 
 }
