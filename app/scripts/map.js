@@ -43,7 +43,11 @@ function myMap() {
 
   var mapCenter = new google.maps.LatLng(36.733577, -119.789057);
   var mapCanvas = document.getElementById("map");
-  var mapOptions = {center: mapCenter, zoom: 14};
+  var mapOptions = {
+      center: mapCenter,
+      zoom: 14,
+      styles:styles
+  };
 
 //CREATE MAP
   var map = new google.maps.Map(mapCanvas, mapOptions);
