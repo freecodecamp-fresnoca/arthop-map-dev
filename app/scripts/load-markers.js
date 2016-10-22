@@ -1,7 +1,8 @@
 function mapData(mapo) {
+  var markers = [];
+
   this.getMarkers = function() {
     //Marker placement with Json
-    var markers = [];
     $.getJSON("./scripts/location.json", function(locations) {
       var venues = locations["venues"];
       var largeInfowindow = new google.maps.InfoWindow();
@@ -13,7 +14,7 @@ function mapData(mapo) {
           map: mapo,
           position: position,
           title: title,
-          animation: google.maps.Animation.DROP
+          animation: google.maps.Animation.BOUNCE
         });
 
         markers.push(marker);
@@ -36,10 +37,7 @@ function mapData(mapo) {
         }
       });
     });
-
-
-
-
+    
 
   };
 }

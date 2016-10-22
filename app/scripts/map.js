@@ -71,7 +71,7 @@ function myMap() {
       }
 
       map.panTo(coords);
-      console.log(personMarker)
+
       personMarker = new google.maps.Marker({
         position: {
           lat: coords.lat,
@@ -114,6 +114,21 @@ function myMap() {
     fillColor: '#EAEA10',
     fillOpacity: 0.1
   });
+
+  google.maps.Polygon.prototype.getBounds = function() {
+    var bounds = new google.maps.LatLngBounds();
+    var paths = this.getPaths();
+    var path;        
+    for (var i = 0; i < paths.getLength(); i++) {
+      path = paths.getAt(i);
+      for (var ii = 0; ii < path.getLength(); ii++) {
+        bounds.extend(path.getAt(ii));
+      }
+    }
+    return bounds;
+  }
+
+  map.fitBounds(cityPolygon.getBounds());
 
   cityPolygon.setMap(map);
   //infowindow.open(map,fultonMall);
