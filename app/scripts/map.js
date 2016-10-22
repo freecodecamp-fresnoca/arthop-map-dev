@@ -81,12 +81,6 @@ function myMap() {
     }
   }
 
-  var fultonMall = new google.maps.Marker({
-        position:mapCenter,
-        icon: "images/mall.png",
-        map:map
-      });
-
       var centerControlDiv = document.createElement('div');
       var centerControl = new CenterControl(centerControlDiv, map);
       centerControlDiv.index = 1;
