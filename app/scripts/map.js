@@ -115,6 +115,4 @@ function myMap() {
 // This	creates a new object
 var mapDataObj = new mapData(map);
     mapDataObj.getMarkers();
-
-console.log(mapDataObj.getMarkers); 
 }
