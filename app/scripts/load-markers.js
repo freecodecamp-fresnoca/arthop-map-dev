@@ -1,20 +1,33 @@
-function mapData(mapo) {
+function mapData(map) {
   var markers = [];
+
+  var icons = {
+          lens: {
+            icon: 'images/lens.png'
+          },
+          mall: {
+            icon: 'images/mall.png'
+          },
+          yeo: {
+            icon: 'images/yeoman.png'
+          }
+        };
 
   this.getMarkers = function() {
     //Marker placement with Json
     $.getJSON("./scripts/location.json", function(locations) {
       var venues = locations["venues"];
       var largeInfowindow = new google.maps.InfoWindow();
-      venues.forEach(function(x) {
-        var position = x.location;
-        var title = x.name;
-        var address = x.address;
+      venues.forEach(function(venue) {
+        var position = venue.location;
+        var title = venue.name;
+        var address = venue.address;
         var marker = new google.maps.Marker({
-          map: mapo,
+          map: map,
           position: position,
           title: title,
-          animation: google.maps.Animation.BOUNCE
+          animation: google.maps.Animation.BOUNCE,
+          icon: icons[venue.type].icon,
         });
 
         markers.push(marker);
@@ -28,7 +41,7 @@ function mapData(mapo) {
           if (infowindow.marker != marker) {
             infowindow.marker = marker;
             infowindow.setContent('<div><strong>' + marker.title + '</strong><p>' + address + '</p></div>');
-            infowindow.open(mapo, marker);
+            infowindow.open(map, marker);
             // Make sure the marker property is cleared if the infowindow is closed.
             infowindow.addListener('closeclick', function() {
               infowindow.setMarker(null);
@@ -37,7 +50,5 @@ function mapData(mapo) {
         }
       });
     });
-    
-
   };
 }
