@@ -6,9 +6,9 @@ version 0.15.1.
 ## Build & development
 
 How-To-Build <br>
-1. Run 'npm install' <br>
-2. Run 'bower install' <br>
-3. Serve using 'grunt serve'
+1. Run `npm install` <br>
+2. Run `bower install` <br>
+3. Serve using `grunt serve`
 
 ## Testing
 
