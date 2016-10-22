@@ -50,6 +50,8 @@ function myMap() {
 
 //CREATE MAP
   var map = new google.maps.Map(mapCanvas, mapOptions);
+  var personMarker;
+  currentLocation();
 
   function currentLocation() {
     if(navigator.geolocation){
@@ -60,7 +62,6 @@ function myMap() {
       };
 
       navigator.geolocation.getCurrentPosition(success, error, opt);
-      
      }
 
     function success(position) {
@@ -70,7 +71,8 @@ function myMap() {
       }
 
       map.panTo(coords);
-      var personMarker = new google.maps.Marker({
+     console.log(personMarker) 
+      personMarker = new google.maps.Marker({
         position: {lat: coords.lat, lng: coords.lng},
         map: map,
         icon: "/images/person.png"
@@ -88,33 +90,33 @@ function myMap() {
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
     // Setup the click event listeners: simply set the map to Chicago.
     centerControlDiv.addEventListener('click', function() {
+      personMarker.setMap(null);
       currentLocation();
-      console.log(coords)
       map.setZoom(18)
     });
 
     var infowindow = new google.maps.InfoWindow({
-    content: "<h1>Arthop Downtown</h1><p>Interactive Map</p>"
-  });
+      content: "<h1>Arthop Downtown</h1><p>Interactive Map</p>"
+    });
 
   // Polygon Construction
-  var polyCoords = [poly1 , poly3 , poly2 , poly4 , poly6 , poly5 ,poly7 ];
-  var cityPolygon = new google.maps.Polygon({
-    paths: polyCoords,
-    strokeColor: '#16a085',
-    strokeOpacity: 0.4,
-    strokeWeight: 2,
-    fillColor: '#EAEA10',
-    fillOpacity: 0.1
-  });
+    var polyCoords = [poly1 , poly3 , poly2 , poly4 , poly6 , poly5 ,poly7 ];
+    var cityPolygon = new google.maps.Polygon({
+      paths: polyCoords,
+      strokeColor: '#16a085',
+      strokeOpacity: 0.4,
+      strokeWeight: 2,
+      fillColor: '#EAEA10',
+      fillOpacity: 0.1
+    });
 
-  cityPolygon.setMap(map);
+    cityPolygon.setMap(map);
 //infowindow.open(map,fultonMall);
 //mapData.getMarkers();
 //loadMarkers();
 // This is a function constructor:
 
 // This	creates a new object
-  var mapDataObj = new mapData(map);
-  mapDataObj.getMarkers();
+    var mapDataObj = new mapData(map);
+    mapDataObj.getMarkers();
 }
