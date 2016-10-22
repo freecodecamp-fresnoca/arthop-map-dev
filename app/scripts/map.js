@@ -2,34 +2,34 @@ var coords;
 
 function CenterControl(controlDiv, map) {
 
-      // Set CSS for the control border.
-      var controlUI = document.createElement('div');
-      controlUI.style.backgroundColor = '#fff';
-      controlUI.style.border = '2px solid #fff';
-      controlUI.style.borderRadius = '3px';
-      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-      controlUI.style.cursor = 'pointer';
-      controlUI.style.marginBottom = '22px';
-      controlUI.style.textAlign = 'center';
-      controlUI.title = 'Click to recenter the map';
-      controlDiv.appendChild(controlUI);
+  // Set CSS for the control border.
+  var controlUI = document.createElement('div');
+  controlUI.style.backgroundColor = '#fff';
+  controlUI.style.border = '2px solid #fff';
+  controlUI.style.borderRadius = '3px';
+  controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.marginBottom = '22px';
+  controlUI.style.textAlign = 'center';
+  controlUI.title = 'Click to recenter the map';
+  controlDiv.appendChild(controlUI);
 
-      // Set CSS for the control interior.
-      var controlText = document.createElement('div');
-      controlText.style.color = 'rgb(25,25,25)';
-      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-      controlText.style.fontSize = '16px';
-      controlText.style.lineHeight = '38px';
-      controlText.style.paddingLeft = '5px';
-      controlText.style.paddingRight = '5px';
-      controlText.innerHTML = 'Center Map';
-      controlUI.appendChild(controlText);
+  // Set CSS for the control interior.
+  var controlText = document.createElement('div');
+  controlText.style.color = 'rgb(25,25,25)';
+  controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+  controlText.style.fontSize = '16px';
+  controlText.style.lineHeight = '38px';
+  controlText.style.paddingLeft = '5px';
+  controlText.style.paddingRight = '5px';
+  controlText.innerHTML = 'Center Map';
+  controlUI.appendChild(controlText);
 
-  }
+}
 
 function myMap() {
 
-//Polygon parameters
+  //Polygon parameters
   var poly1 = new google.maps.LatLng(36.743129, -119.800229);
   var poly2 = new google.maps.LatLng(36.742353, -119.803104);
   var poly3 = new google.maps.LatLng(36.743600, -119.801833);
@@ -43,18 +43,18 @@ function myMap() {
   var mapCenter = new google.maps.LatLng(36.733577, -119.789057);
   var mapCanvas = document.getElementById("map");
   var mapOptions = {
-      center: mapCenter,
-      zoom: 14,
-      styles:styles
+    center: mapCenter,
+    zoom: 14,
+    styles: styles
   };
 
-//CREATE MAP
+  //CREATE MAP
   var map = new google.maps.Map(mapCanvas, mapOptions);
   var personMarker;
   currentLocation();
 
   function currentLocation() {
-    if(navigator.geolocation){
+    if (navigator.geolocation) {
       var opt = {
         enableHighAccuary: true,
         timeout: 5000,
@@ -62,7 +62,7 @@ function myMap() {
       };
 
       navigator.geolocation.getCurrentPosition(success, error, opt);
-     }
+    }
 
     function success(position) {
       coords = {
@@ -71,54 +71,57 @@ function myMap() {
       }
 
       map.panTo(coords);
-     console.log(personMarker) 
+      console.log(personMarker)
       personMarker = new google.maps.Marker({
-        position: {lat: coords.lat, lng: coords.lng},
+        position: {
+          lat: coords.lat,
+          lng: coords.lng
+        },
         map: map,
         icon: "/images/person.png"
       })
     };
- 
-      function error() {
-        console.log("Location cannot be used/found");
-      }
+
+    function error() {
+      console.log("Location cannot be used/found");
     }
+  }
 
-    var centerControlDiv = document.createElement('div');
-    var centerControl = new CenterControl(centerControlDiv, map);
-    centerControlDiv.index = 1;
-    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
-    // Setup the click event listeners: simply set the map to Chicago.
-    centerControlDiv.addEventListener('click', function() {
-      if(personMarker){
-        personMarker.setMap(null);
-      }
-      currentLocation();
-      map.setZoom(18)
-    });
+  var centerControlDiv = document.createElement('div');
+  var centerControl = new CenterControl(centerControlDiv, map);
+  centerControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
+  // Setup the click event listeners: simply set the map to Chicago.
+  centerControlDiv.addEventListener('click', function() {
+    if (personMarker) {
+      personMarker.setMap(null);
+    }
+    currentLocation();
+    map.setZoom(18)
+  });
 
-    var infowindow = new google.maps.InfoWindow({
-      content: "<h1>Arthop Downtown</h1><p>Interactive Map</p>"
-    });
+  var infowindow = new google.maps.InfoWindow({
+    content: "<h1>Arthop Downtown</h1><p>Interactive Map</p>"
+  });
 
   // Polygon Construction
-    var polyCoords = [poly1 , poly3 , poly2 , poly4 , poly6 , poly5 ,poly7 ];
-    var cityPolygon = new google.maps.Polygon({
-      paths: polyCoords,
-      strokeColor: '#16a085',
-      strokeOpacity: 0.4,
-      strokeWeight: 2,
-      fillColor: '#EAEA10',
-      fillOpacity: 0.1
-    });
+  var polyCoords = [poly1, poly3, poly2, poly4, poly6, poly5, poly7];
+  var cityPolygon = new google.maps.Polygon({
+    paths: polyCoords,
+    strokeColor: '#16a085',
+    strokeOpacity: 0.4,
+    strokeWeight: 2,
+    fillColor: '#EAEA10',
+    fillOpacity: 0.1
+  });
 
-    cityPolygon.setMap(map);
-//infowindow.open(map,fultonMall);
-//mapData.getMarkers();
-//loadMarkers();
-// This is a function constructor:
+  cityPolygon.setMap(map);
+  //infowindow.open(map,fultonMall);
+  //mapData.getMarkers();
+  //loadMarkers();
+  // This is a function constructor:
 
-// This	creates a new object
-    var mapDataObj = new mapData(map);
-    mapDataObj.getMarkers();
+  // This	creates a new object
+  var mapDataObj = new mapData(map);
+  mapDataObj.getMarkers();
 }
