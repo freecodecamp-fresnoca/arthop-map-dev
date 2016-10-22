@@ -90,7 +90,9 @@ function myMap() {
     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
     // Setup the click event listeners: simply set the map to Chicago.
     centerControlDiv.addEventListener('click', function() {
-      personMarker.setMap(null);
+      if(personMarker){
+        personMarker.setMap(null);
+      }
       currentLocation();
       map.setZoom(18)
     });
