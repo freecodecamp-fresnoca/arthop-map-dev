@@ -143,3 +143,7 @@ footer {
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
 }
+
+.pre-scrollable {
+  max-height: 45vh;
+}

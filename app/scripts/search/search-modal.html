@@ -1,17 +1,36 @@
 <!-- Modal -->
-<div class="modal fade" id="searchIt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title" id="myModalLabel">Search</h4>
-    </div>
-    <div class="modal-body">
-    <p>This is the search section</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<div ng-app="app.js">
+  <div class="modal fade" id="searchIt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Search</h4>
+      </div>
+      <div class="modal-body">
+        <h3 class="text-center">Location Directory</h3>
+          <input ng-model="query" placeholder="Search for locations" autofocustype="text" class="input-medium search-query form-control">
+          <!--<button type="submit" class="btn btn-success">Search</button>-->
+          
+          <hr class="m-t-1">
+          
+          <div class="list-group pre-scrollable">
+          
+            <li ng-show="query" ng-repeat="item in locations | filter: query" class="list-group-item p-y-2" style="text-align: center;">
+              <div>
+                <h4>{{item.name}}</h4>
+                <p>{{item.address}}</p>
+              </div>
+            </li>
+          
+        </div>
+      
+      </div>
+      <hr>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
-</div>
+  </div>
 </div>

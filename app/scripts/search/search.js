@@ -18,7 +18,11 @@
 			}
 		})
         
-        .controller( 'searchCtrl', ['$scope', function( $scope ) {
-            console.log("Search Controlla");
+        .controller( 'searchCtrl', ['$scope', '$http', function( $scope, $http ) {
+            $http.get("scripts/location.json").success(function(data) {
+		    	$scope.locations = data.venues;
+		  });
+            
 	   }]);
-})();
+
+})(window.angular);
