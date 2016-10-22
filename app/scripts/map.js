@@ -53,24 +53,6 @@ function myMap() {
 
   function currentLocation() {
     if(navigator.geolocation){
-      function success(position) {
-        coords = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
-
-        map.panTo(coords);
-        var personMarker = new google.maps.Marker({
-          position: {lat: coords.lat, lng: coords.lng},
-          map: map,
-          icon: "/images/person.png"
-        })
-      }
-
-      function error() {
-        console.log("Location cannot be used/found");
-      }
-
       var opt = {
         enableHighAccuary: true,
         timeout: 5000,
@@ -78,21 +60,41 @@ function myMap() {
       };
 
       navigator.geolocation.getCurrentPosition(success, error, opt);
+      
+     }
+
+    function success(position) {
+      coords = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }
+
+      map.panTo(coords);
+      var personMarker = new google.maps.Marker({
+        position: {lat: coords.lat, lng: coords.lng},
+        map: map,
+        icon: "/images/person.png"
+      })
+    };
+ 
+      function error() {
+        console.log("Location cannot be used/found");
+      }
     }
-  }
 
-      var centerControlDiv = document.createElement('div');
-      var centerControl = new CenterControl(centerControlDiv, map);
-      centerControlDiv.index = 1;
-      map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
-      // Setup the click event listeners: simply set the map to Chicago.
-      centerControlDiv.addEventListener('click', function() {
-        currentLocation();
-        map.setZoom(18)
-      });
+    var centerControlDiv = document.createElement('div');
+    var centerControl = new CenterControl(centerControlDiv, map);
+    centerControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(centerControlDiv);
+    // Setup the click event listeners: simply set the map to Chicago.
+    centerControlDiv.addEventListener('click', function() {
+      currentLocation();
+      console.log(coords)
+      map.setZoom(18)
+    });
 
-  var infowindow = new google.maps.InfoWindow({
-  content: "<h1>Arthop Downtown</h1><p>Interactive Map</p>"
+    var infowindow = new google.maps.InfoWindow({
+    content: "<h1>Arthop Downtown</h1><p>Interactive Map</p>"
   });
 
   // Polygon Construction
@@ -113,6 +115,6 @@ function myMap() {
 // This is a function constructor:
 
 // This	creates a new object
-var mapDataObj = new mapData(map);
-    mapDataObj.getMarkers();
+  var mapDataObj = new mapData(map);
+  mapDataObj.getMarkers();
 }
