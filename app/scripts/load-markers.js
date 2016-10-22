@@ -12,7 +12,8 @@ function mapData(mapo) {
     var marker = new google.maps.Marker({
       map: mapo,
       position: position,
-      title: title
+      title: title,
+      animation: google.maps.Animation.DROP
     });
 
     markers.push(marker);
