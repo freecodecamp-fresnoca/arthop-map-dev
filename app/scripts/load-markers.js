@@ -26,8 +26,7 @@ function mapData(map) {
           map: map,
           position: position,
           title: title,
-          animation: google.maps.Animation.BOUNCE,
-          icon: icons[venue.type].icon,
+          animation: google.maps.Animation.BOUNCE
         });
 
         markers.push(marker);

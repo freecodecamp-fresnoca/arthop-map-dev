@@ -45,8 +45,7 @@ function myMap() {
   var mapOptions = {
     center: mapCenter,
     zoom: 14,
-    styles: styles,
-    mapTypeId: 'hybrid'
+    styles: styles
   };
 
   //CREATE MAP
@@ -71,16 +70,16 @@ function myMap() {
         lng: position.coords.longitude
       }
 
-      // map.panTo(coords);
+      map.panTo(coords);
 
-      // personMarker = new google.maps.Marker({
-      //   position: {
-      //     lat: coords.lat,
-      //     lng: coords.lng
-      //   },
-      //   map: map,
-      //   icon: "/images/person.png"
-      // })
+      personMarker = new google.maps.Marker({
+        position: {
+          lat: coords.lat,
+          lng: coords.lng
+        },
+        map: map,
+        icon: "/images/person.png"
+      })
     };
 
     function error() {
