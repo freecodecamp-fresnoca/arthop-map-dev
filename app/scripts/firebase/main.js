@@ -5,10 +5,12 @@ function ArtHop() {
   this.checkSetup();
 
   // Shortcuts to DOM Elements.
-  this.loginButton = document.getElementById('login')
+  this.loginButton = document.getElementById('login');
+  this.logoutButton = document.getElementById('logout');
   
   //Button listeners
   this.loginButton.addEventListener('click', this.signIn.bind(this));
+  this.logoutButton.addEventListener('click', this.signOut.bind(this));
 
   this.initFirebase();
 }
@@ -33,6 +35,7 @@ ArtHop.prototype.signIn = function() {
 // Signs-out of Friendly Chat.
 ArtHop.prototype.signOut = function() {
   // Sign out of Firebase.
+  console.log('you should be logged out')
   this.auth.signOut();
 };
 
