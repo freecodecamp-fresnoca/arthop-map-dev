@@ -28,6 +28,7 @@ function mapData(map) {
           title: title,
           animation: google.maps.Animation.BOUNCE
         });
+        setTimeout(function(){ marker.setAnimation(null); }, 1600);
 
         markers.push(marker);
         marker.addListener('click', function() {
