@@ -1,16 +1,20 @@
 'use strict';
 
-// Initializes FriendlyChat.
-function FriendlyChat() {
+// Initializes ArtHop.
+function ArtHop() {
   this.checkSetup();
 
   // Shortcuts to DOM Elements.
+  this.loginButton = document.getElementById('login')
+  
+  //Button listeners
+  this.loginButton.addEventListener('click', this.signIn.bind(this));
 
   this.initFirebase();
 }
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
-FriendlyChat.prototype.initFirebase = function() {
+ArtHop.prototype.initFirebase = function() {
   // Shortcuts to Firebase SDK features.
   this.auth = firebase.auth();
   this.database = firebase.database();
@@ -19,8 +23,31 @@ FriendlyChat.prototype.initFirebase = function() {
   this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
 };
 
+// Signs-in Friendly Chat.
+ArtHop.prototype.signIn = function() {
+  // Sign in Firebase using popup auth and Google as the identity provider.
+  var provider = new firebase.auth.GoogleAuthProvider();
+  this.auth.signInWithPopup(provider);
+};
+
+// Signs-out of Friendly Chat.
+ArtHop.prototype.signOut = function() {
+  // Sign out of Firebase.
+  this.auth.signOut();
+};
+
+// Triggers when the auth state change for instance when the user signs-in or signs-out.
+ArtHop.prototype.onAuthStateChanged = function(user) {
+  if (user) { // User is signed in!
+    // Get profile pic and user's name from the Firebase user object.
+    console.log(user, "logged in")
+  } else { // User is signed out!
+    console.log('user is logged out')
+  }
+};
+
 // Checks that the Firebase SDK has been correctly setup and configured.
-FriendlyChat.prototype.checkSetup = function() {
+ArtHop.prototype.checkSetup = function() {
   if (!window.firebase || !(firebase.app instanceof Function) || !window.config) {
     window.alert('You have not configured and imported the Firebase SDK. ' +
         'Make sure you go through the codelab setup instructions.');
@@ -35,5 +62,5 @@ FriendlyChat.prototype.checkSetup = function() {
 };
 
 window.onload = function() {
-  window.friendlyChat = new FriendlyChat();
+  window.artHop= new ArtHop();
 };
