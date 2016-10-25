@@ -1,3 +1,5 @@
+'use strict';
+
 function mapData(map) {
   var markers = [];
 
@@ -16,7 +18,7 @@ function mapData(map) {
   this.getMarkers = function() {
     //Marker placement with Json
     $.getJSON("./scripts/location.json", function(locations) {
-      var venues = locations["venues"];
+      var venues = locations.venues;
       var largeInfowindow = new google.maps.InfoWindow();
       venues.forEach(function(venue) {
         var position = venue.location;
@@ -37,7 +39,7 @@ function mapData(map) {
           });
           infowindow.open(map, marker);
         });
-      });
+     });
     });
   };
 }

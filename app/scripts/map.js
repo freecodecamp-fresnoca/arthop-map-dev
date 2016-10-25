@@ -1,3 +1,4 @@
+'use strict';
 var coords;
 
 function CenterControl(controlDiv, map) {
@@ -80,7 +81,7 @@ function myMap() {
         map: map,
         icon: "/images/person.png"
       })
-    };
+    }
 
     function error() {
       console.log("Location cannot be used/found");
@@ -97,7 +98,7 @@ function myMap() {
       personMarker.setMap(null);
     }
     currentLocation();
-    map.setZoom(18)
+    map.setZoom(18);
   });
 
   var infowindow = new google.maps.InfoWindow({
@@ -131,10 +132,6 @@ function myMap() {
   map.fitBounds(cityPolygon.getBounds());
 
   cityPolygon.setMap(map);
-  //infowindow.open(map,fultonMall);
-  //mapData.getMarkers();
-  //loadMarkers();
-  // This is a function constructor:
 
   // This	creates a new object
   var mapDataObj = new mapData(map);
