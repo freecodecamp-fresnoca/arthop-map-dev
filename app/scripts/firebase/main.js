@@ -44,8 +44,14 @@ ArtHop.prototype.onAuthStateChanged = function(user) {
   if (user) { // User is signed in!
     // Get profile pic and user's name from the Firebase user object.
     console.log(user, "logged in")
+
+    this.logoutButton.style.visibility = 'visible';
+    this.loginButton.style.visibility = 'hidden';
   } else { // User is signed out!
     console.log('user is logged out')
+    
+    this.logoutButton.style.visibility = 'hidden';
+    this.loginButton.style.visibility = 'visible';
   }
 };
 
