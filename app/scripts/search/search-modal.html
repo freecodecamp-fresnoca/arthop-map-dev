@@ -1,3 +1,10 @@
+<!--make search input in modal autofocus-->
+<!--optimize search filter-->
+<style type="text/css">
+  .validated {
+  background-color: #99ff99;
+}
+</style>
 <!-- Modal -->
 <div ng-app="app.js">
   <div class="modal fade" id="searchIt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -9,17 +16,18 @@
       </div>
       <div class="modal-body">
         <h3 class="text-center">Location Directory</h3>
-          <input ng-model="query" placeholder="Search for locations" autofocustype="text" class="input-medium search-query form-control">
+          <input ng-model="query" placeholder="Search for locations" class="input-medium search-query form-control">
           <!--<button type="submit" class="btn btn-success">Search</button>-->
           
           <hr class="m-t-1">
           
           <div class="list-group pre-scrollable">
           
-            <li ng-show="query" ng-repeat="item in locations | filter: query" class="list-group-item p-y-2" style="text-align: center;">
-              <div>
-                <h4>{{item.name}}</h4>
+            <li ng-class="{'validated': item.userBusinessKey === item.businessKey}" ng-show="query" ng-repeat="item in locations | filter: query" class="list-group-item p-y-2" style="text-align: center;">
+              <div class="form-group" ng-class="{'has-success': item.userBusinessKey === item.businessKey}">
+                <h4>{{item.name}}<span ng-show="item.userBusinessKey === item.businessKey">&#10004</span></h4>
                 <p>{{item.address}}</p>
+                <input class="form-control" type="text" placeholder="Business Key" ng-model="item.userBusinessKey" ng-hide="item.userBusinessKey === item.businessKey" required>
               </div>
             </li>
           
