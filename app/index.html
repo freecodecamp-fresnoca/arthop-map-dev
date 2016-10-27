@@ -33,6 +33,11 @@
 
           <header class="header">
             <h1 class="header__title">Arthop Map</h1>
+            <p class="text-center" id="sample-text">Sample</p>
+            <div class="loginArea">
+              <button type="button" class="btn btn-primary btn-lg" id="login">Log In</button>
+              <button type="button" class="btn btn-primary btn-lg" id="logout">Log Out</button>
+            </div>
             <search-button></search-button>
           </header>
           <search-modal></search-modal>
@@ -64,16 +69,17 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/config.js"></script>
-        <script src="scripts/map.js"></script>
-        <script src="scripts/app.js"></script>
-        <script src="scripts/search/search.js"></script>
-        <script src="scripts/load-markers.js"></script>
-        <script src="scripts/styles.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/map.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/search/search.js"></script>
+    <script src="scripts/load-markers.js"></script>
+    <script src="scripts/styles.js"></script>
 
-        <!-- Firebase Stuff -->
-        <!-- endbuild -->
+    <!-- Firebase Stuff -->
+    <script src="scripts/firebase/main.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
