@@ -7,12 +7,22 @@ function ArtHop() {
   // Shortcuts to DOM Elements.
   this.loginButton = document.getElementById('login');
   this.logoutButton = document.getElementById('logout');
+  this.nameDisplay = document.getElementById('sample-text');
   
   //Button listeners
   this.loginButton.addEventListener('click', this.signIn.bind(this));
   this.logoutButton.addEventListener('click', this.signOut.bind(this));
 
   this.initFirebase();
+  this.loadVenues();
+}
+
+ArtHop.prototype.loadVenues = function() {
+  this.venuesRef = this.database.ref('venues');
+  this.venuesRef.off();
+  this.venuesRef.once('value').then(function(data) {
+    console.log(map)
+  });
 }
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
@@ -45,10 +55,12 @@ ArtHop.prototype.onAuthStateChanged = function(user) {
 
     this.logoutButton.style.display = 'block';
     this.loginButton.style.display = 'none';
+    this.nameDisplay.textContent = "Logged in as " + user.displayName;
   } else { // User is signed out!
     
     this.logoutButton.style.display = 'none';
     this.loginButton.style.display = 'block';
+    this.nameDisplay.textContent = '';
   }
 };
 
