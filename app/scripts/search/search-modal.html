@@ -16,16 +16,16 @@
       </div>
       <div class="modal-body">
         <h3 class="text-center">Location Directory</h3>
-          <input ng-model="query" placeholder="Search for locations" class="input-medium search-query form-control">
+          <input ng-model="query.name" placeholder="Search for locations" class="input-medium search-query form-control">
           <!--<button type="submit" class="btn btn-success">Search</button>-->
           
           <hr class="m-t-1">
           
           <div class="list-group pre-scrollable">
           
-            <li ng-class="{'validated': item.userBusinessKey === item.businessKey}" ng-show="query" ng-repeat="item in locations | filter: query" class="list-group-item p-y-2" style="text-align: center;">
+            <li ng-class="{'validated': item.userBusinessKey === item.businessKey}" ng-show="query.name" ng-repeat="item in locations | filter: query:strict" class="list-group-item p-y-2" style="text-align: center;">
               <div class="form-group" ng-class="{'has-success': item.userBusinessKey === item.businessKey}">
-                <h4>{{item.name}}<span ng-show="item.userBusinessKey === item.businessKey">&#10004</span></h4>
+                <h4>{{item.name}}<span ng-show="item.userBusinessKey === item.businessKey" style="float: left" class="glyphicon glyphicon-ok" aria-hidden="true"></span></h4>
                 <p>{{item.address}}</p>
                 <input class="form-control" type="text" placeholder="Business Key" ng-model="item.userBusinessKey" ng-hide="item.userBusinessKey === item.businessKey" required>
               </div>
