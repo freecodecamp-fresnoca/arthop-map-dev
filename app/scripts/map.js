@@ -1,5 +1,6 @@
 'use strict';
 var coords;
+var map;
 
 function CenterControl(controlDiv, map) {
 
@@ -50,7 +51,7 @@ function myMap() {
   };
 
   //CREATE MAP
-  var map = new google.maps.Map(mapCanvas, mapOptions);
+  map = new google.maps.Map(mapCanvas, mapOptions);
   var personMarker;
   currentLocation();
 
@@ -130,10 +131,18 @@ function myMap() {
   }
 
   map.fitBounds(cityPolygon.getBounds());
-
   cityPolygon.setMap(map);
 
+  checkForArtHop();
+}
+
+function checkForArtHop() {
+  if(window.artHop) {
   // This	creates a new object
-  var mapDataObj = new mapData(map);
-  mapDataObj.getMarkers();
+    var mapDataObj = new mapData(map);
+    mapDataObj.getMarkers();
+  } else {
+    console.log("Looking for artHop");
+    setTimeout(checkForArtHop, 10000);
+  }
 }

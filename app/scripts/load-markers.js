@@ -1,7 +1,6 @@
 'use strict';
 
 function mapData(map) {
-  var markers = [];
 
   var icons = {
           lens: {
@@ -15,31 +14,33 @@ function mapData(map) {
           }
         };
 
-  this.getMarkers = function() {
-    //Marker placement with Json
-    $.getJSON("./scripts/location.json", function(locations) {
-      var venues = locations.venues;
-      var largeInfowindow = new google.maps.InfoWindow();
-      venues.forEach(function(venue) {
-        var position = venue.location;
-        var title = venue.name;
-        var address = venue.address;
-        var marker = new google.maps.Marker({
-          map: map,
-          position: position,
-          title: title,
-          animation: google.maps.Animation.BOUNCE
-        });
-        setTimeout(function(){ marker.setAnimation(null); }, 1600);
+  this.getMarkers = loadMarkers;
+}
 
-        markers.push(marker);
-        marker.addListener('click', function() {
-          var infowindow = new google.maps.InfoWindow({
-            content: '<div><strong>' + this.title + '</strong><p>' + address + '</p></div>'
-          });
-          infowindow.open(map, marker);
-        });
-     });
+function loadMarkers() {
+  var markers = [];
+  var venues = window.artHop.venues;
+  console.log(venues)
+  var largeInfoWindow = new google.maps.InfoWindow();
+
+  venues.forEach(function(venue) {
+    var position = venue.location;
+    var title = venue.name;
+    var address = venue.address;
+    var marker = new google.maps.Marker({
+      map: map,
+      position: position,
+      title: title,
+      animation: google.maps.Animation.BOUNCE
     });
-  };
+    setTimeout(function(){ marker.setAnimation(null); }, 1600);
+
+    markers.push(marker);
+    marker.addListener('click', function() {
+      var infowindow = new google.maps.InfoWindow({
+        content: '<div><strong>' + this.title + '</string><p>' + address + '</p></div'
+      });
+      infowindow.open(map, marker);
+    });
+  });
 }

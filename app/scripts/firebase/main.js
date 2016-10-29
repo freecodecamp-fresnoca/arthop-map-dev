@@ -8,7 +8,7 @@ function ArtHop() {
   this.loginButton = document.getElementById('login');
   this.logoutButton = document.getElementById('logout');
   this.nameDisplay = document.getElementById('sample-text');
-  
+
   //Button listeners
   this.loginButton.addEventListener('click', this.signIn.bind(this));
   this.logoutButton.addEventListener('click', this.signOut.bind(this));
@@ -20,9 +20,13 @@ function ArtHop() {
 ArtHop.prototype.loadVenues = function() {
   this.venuesRef = this.database.ref('venues');
   this.venuesRef.off();
+  var self = this;
+  var venues;
+
   this.venuesRef.once('value').then(function(data) {
-    console.log(map)
+    self.venues = data.val(); 
   });
+
 }
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
