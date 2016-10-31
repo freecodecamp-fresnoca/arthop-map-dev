@@ -20,7 +20,6 @@
 			};
 		})
     .controller( 'searchCtrl', ['$scope', '$http', function( $scope, $http ) {
-      console.log($scope, 'directly in controller')
       var p1 = new Promise(function(resolve, reject) {
         var attemptsLeft = 20;
         function check() {
@@ -35,7 +34,7 @@
       });
 
       p1.then(function(val) {
-        $scope.location = val;
+        $scope.locations = val;
         console.log($scope)
       })
      }]);
