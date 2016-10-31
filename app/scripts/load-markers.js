@@ -20,7 +20,6 @@ function mapData(map) {
 function loadMarkers() {
   var markers = [];
   var venues = window.artHop.venues;
-  console.log(venues)
   var largeInfoWindow = new google.maps.InfoWindow();
 
   venues.forEach(function(venue) {
