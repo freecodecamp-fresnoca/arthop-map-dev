@@ -140,7 +140,6 @@ function drawMarkers() {
     var mapDataObj = new mapData(map);
     mapDataObj.getMarkers();
   } else {
-    console.log("Looking for artHop");
     setTimeout(drawMarkers, 500);
   }
 }

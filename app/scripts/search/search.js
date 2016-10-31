@@ -26,7 +26,6 @@
           if(window.artHop && window.artHop.venues.length !== 0) {
             resolve(window.artHop.venues);
           } else {
-            console.log('LOOPING')
             setTimeout(check, 1000);
           } 
         }
@@ -35,15 +34,8 @@
 
       p1.then(function(val) {
         $scope.locations = val;
-        console.log($scope)
+      }).catch(function(error) {
+        console.log(error, 'is the error(s)');
       })
      }]);
 })(window.angular);
-
-function loadVenues() {
-    if(window.artHop && window.artHop.venues.length !== 0){
-      console.log('artHop is now accessible')
-    } else {
-     setTimeout(loadVenues, 500);
-    }
-}
