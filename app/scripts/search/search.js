@@ -20,8 +20,31 @@
 			};
 		})
     .controller( 'searchCtrl', ['$scope', '$http', function( $scope, $http ) {
-        $http.get("scripts/location.json").success(function(data) {
-          $scope.locations = data.venues;
-        });
+      console.log($scope, 'directly in controller')
+      var p1 = new Promise(function(resolve, reject) {
+        var attemptsLeft = 20;
+        function check() {
+          if(window.artHop && window.artHop.venues.length !== 0) {
+            resolve(window.artHop.venues);
+          } else {
+            console.log('LOOPING')
+            setTimeout(check, 1000);
+          } 
+        }
+        check();
+      });
+
+      p1.then(function(val) {
+        $scope.location = val;
+        console.log($scope)
+      })
      }]);
 })(window.angular);
+
+function loadVenues() {
+    if(window.artHop && window.artHop.venues.length !== 0){
+      console.log('artHop is now accessible')
+    } else {
+     setTimeout(loadVenues, 500);
+    }
+}

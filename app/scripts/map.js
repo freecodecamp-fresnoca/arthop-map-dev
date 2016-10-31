@@ -132,17 +132,15 @@ function myMap() {
 
   map.fitBounds(cityPolygon.getBounds());
   cityPolygon.setMap(map);
-
-  checkForArtHop();
+  drawMarkers();
 }
 
-function checkForArtHop() {
+function drawMarkers() {
   if(window.artHop && window.artHop.venues.length !== 0) {
-  // This	creates a new object
     var mapDataObj = new mapData(map);
     mapDataObj.getMarkers();
   } else {
     console.log("Looking for artHop");
-    setTimeout(checkForArtHop, 500);
+    setTimeout(drawMarkers, 500);
   }
 }
