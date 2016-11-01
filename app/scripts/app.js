@@ -13,5 +13,6 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngTouch'
+    'ngTouch',
+    'ui.router'
   ]);
