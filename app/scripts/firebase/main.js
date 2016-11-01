@@ -127,9 +127,7 @@ ArtHop.prototype.addPoint = function() {
   this.currentUserRef = this.database.ref('/users/' + Object.keys(window.artHop.rawUser)[0]);
   var points;
   this.currentUserRef.once('value').then(function(data) {
-    points = data.val().points;
-    console.log(points);
-    points++;
+    points = data.val().points + 1;
     window.artHop.currentUserRef.update({points: points});
   });
 }
