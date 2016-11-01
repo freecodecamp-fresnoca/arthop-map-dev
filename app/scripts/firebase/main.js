@@ -110,6 +110,7 @@ ArtHop.prototype.checkForUser = function(user) {
           window.artHop.addUserToDatabase();
         } else {
           var currentUser = data.val();
+          window.artHop.rawUser = currentUser;
           window.artHop.currentUser = currentUser[Object.keys(currentUser)[0]];
         }
       })
@@ -120,6 +121,17 @@ ArtHop.prototype.checkForUser = function(user) {
     console.log('CHECKING FOR USER DB CONNECTION')
     setTimeout(this.checkForUser, 1000);
   }
+}
+
+ArtHop.prototype.addPoint = function() {
+  this.currentUserRef = this.database.ref('/users/' + Object.keys(window.artHop.rawUser)[0]);
+  var points;
+  this.currentUserRef.once('value').then(function(data) {
+    points = data.val().points;
+    console.log(points);
+    points++;
+    window.artHop.currentUserRef.update({points: points});
+  });
 }
 
 // Checks that the Firebase SDK has been correctly setup and configured.
