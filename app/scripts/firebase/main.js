@@ -23,7 +23,6 @@ ArtHop.prototype.loadVenues = function() {
   this.venuesRef = this.database.ref('venues');
   this.venuesRef.off();
   var self = this;
-  var venues = [];
 
   this.venuesRef.once('value').then(function(data) {
     self.venues = data.val(); 
@@ -37,7 +36,6 @@ ArtHop.prototype.loadTopUsers = function() {
 
   function appendUsers(data) {
     self.users = data.val();
-    console.log('...', self.users)
   }
 
   this.topUsersRef.once('value').then(appendUsers);
@@ -52,14 +50,12 @@ ArtHop.prototype.initFirebase = function() {
   this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
 };
 
-// Signs-in Friendly Chat.
 ArtHop.prototype.signIn = function() {
   // Sign in Firebase using popup auth and Google as the identity provider.
   var provider = new firebase.auth.GoogleAuthProvider();
   this.auth.signInWithPopup(provider);
 };
 
-// Signs-out of Friendly Chat.
 ArtHop.prototype.signOut = function() {
   // Sign out of Firebase.
   this.auth.signOut();
@@ -69,12 +65,10 @@ ArtHop.prototype.signOut = function() {
 ArtHop.prototype.onAuthStateChanged = function(user) {
   if (user) { // User is signed in!
     // Get profile pic and user's name from the Firebase user object.
-
     this.logoutButton.style.display = 'block';
     this.loginButton.style.display = 'none';
     this.nameDisplay.textContent = "Logged in as " + user.displayName;
   } else { // User is signed out!
-    
     this.logoutButton.style.display = 'none';
     this.loginButton.style.display = 'block';
     this.nameDisplay.textContent = '';
