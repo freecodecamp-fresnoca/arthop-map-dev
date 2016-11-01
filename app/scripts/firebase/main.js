@@ -9,6 +9,7 @@ function ArtHop() {
   this.logoutButton = document.getElementById('logout');
   this.nameDisplay = document.getElementById('sample-text');
   this.venues = [];
+  this.users = [];
 
   //Button listeners
   this.loginButton.addEventListener('click', this.signIn.bind(this));
@@ -35,7 +36,10 @@ ArtHop.prototype.loadUsers = function() {
   var self = this;
 
   function appendUsers(data) {
-    self.users = data.val();
+    var users = data.val();
+    for(var u in users) {
+      self.users.push(users[u]);
+    }
   }
 
   this.usersRef.once('value').then(appendUsers);
