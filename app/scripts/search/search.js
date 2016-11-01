@@ -1,7 +1,28 @@
 'use strict';
 
 (function() {
-	angular.module('arthopMapApp', [])
+	angular.module('arthopMapApp')
+	.config(['$stateProvider',function($stateProvider) {
+	  var helloState = {
+	    name: 'user',
+	    url: '/user',
+	    template: '<h3>This is the user</h3>',
+			onEnter: loadModal
+	  }
+
+	  var aboutState = {
+	    name: 'about',
+	    url: '/about',
+	    template: '<h3>Its the UI-Router hello world app!</h3>',
+			onEnter: loadModal
+	  }
+
+	  $stateProvider.state(helloState);
+	  $stateProvider.state(aboutState);
+	}])
+
+
+
 
 		.directive("searchButton", function() {
 			return {
@@ -27,7 +48,7 @@
             resolve(window.artHop.venues);
           } else {
             setTimeout(check, 1000);
-          } 
+          }
         }
         check();
       });
@@ -39,3 +60,8 @@
       })
      }]);
 })(window.angular);
+function loadModal(){
+	setTimeout(function(){
+		$('#searchIt').modal('show');
+	}, 1000);
+}
