@@ -16,6 +16,7 @@ function ArtHop() {
 
   this.initFirebase();
   this.loadVenues();
+  this.loadTopUsers();
 }
 
 ArtHop.prototype.loadVenues = function() {
@@ -29,6 +30,18 @@ ArtHop.prototype.loadVenues = function() {
   });
 }
 
+ArtHop.prototype.loadTopUsers = function() {
+  this.topUsersRef = this.database.ref('users');
+  this.topUsersRef.off();
+  var self = this;
+
+  function appendUsers(data) {
+    self.users = data.val();
+    console.log('...', self.users)
+  }
+
+  this.topUsersRef.once('value').then(appendUsers);
+}
 // Sets up shortcuts to Firebase features and initiate firebase auth.
 ArtHop.prototype.initFirebase = function() {
   // Shortcuts to Firebase SDK features.
