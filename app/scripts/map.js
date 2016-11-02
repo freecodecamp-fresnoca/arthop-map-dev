@@ -73,6 +73,7 @@ function myMap() {
       }
 
       map.panTo(coords);
+      map.setZoom(18);
 
       personMarker = new google.maps.Marker({
         position: {
@@ -99,7 +100,6 @@ function myMap() {
       personMarker.setMap(null);
     }
     currentLocation();
-    map.setZoom(18);
   });
 
   var infowindow = new google.maps.InfoWindow({
