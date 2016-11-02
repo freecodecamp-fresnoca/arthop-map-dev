@@ -6,39 +6,39 @@
 	  var userState = {
 	    name: 'user',
 	    url: '/user',
-	    template: '',
+	    templateUrl: '/views/panelStates/user.html',
 			onEnter: loadModal,
-			controller: 'userController as ctrl'
+			controller: 'UserController as ctrl'
 	  }
 
 	  var leaderboardState = {
 	    name: 'leaderboard',
 	    url: '/leaderboard',
-	    template: '<h3>This is the leaderboard</h3>',
+	    templateUrl: '/views/panelStates/leaderboard.html',
 			onEnter: loadModal,
-			controller: 'leaderboardController as ctrl'
+			controller: 'LeaderboardController as ctrl'
 	  }
 
 		var visitedState = {
 			name: 'visited',
 	    url: '/visited',
-	    template: '<h3>This is the visited state.</h3>',
+	    templateUrl: '/views/panelStates/user.html',
 			onEnter: loadModal,
-			controller: 'visitedController as ctrl'
+			controller: 'VisitedController as ctrl'
 		}
 
 		var addState = {
 			name: 'add',
 	    url: '/add',
-	    template: '<h3>This is where dreams are made added. </h3>',
+	    templateUrl: '/views/panelStates/add.html',
 			onEnter: loadModal,
-			controller: 'addController as ctrl'
+			controller: 'AddController as ctrl'
 		}
 
 	  $stateProvider.state(userState);
 	  $stateProvider.state(leaderboardState);
 		$stateProvider.state(visitedState);
-		$stateProvider.state(addedState);
+		$stateProvider.state(addState);
 	}])
 
 
@@ -47,20 +47,20 @@
 		.directive("searchButton", function() {
 			return {
 				restrict: "E",
-				templateUrl: "scripts/search/search-button.html",
-                controller: "searchCtrl"
+				templateUrl: "views/panel/panel-button.html",
+                controller: "panelCtrl"
 
 			};
 		})
 		.directive("searchModal", function() {
 			return {
 				restrict: "E",
-				templateUrl: "scripts/search/search-modal.html",
-                controller: "searchCtrl"
+				templateUrl: "views/panel/panel-modal.html",
+                controller: "panelCtrl"
 
 			};
 		})
-    .controller( 'searchCtrl', ['$scope', '$http', function( $scope, $http ) {
+    .controller( 'panelCtrl', ['$scope', '$http', function( $scope, $http ) {
       var p1 = new Promise(function(resolve, reject) {
         var attemptsLeft = 20;
         function check() {
