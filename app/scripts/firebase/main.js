@@ -115,7 +115,7 @@ ArtHop.prototype.checkForUser = function(user) {
         }
       })
       .catch(function(error) {
-        console.log("WTF IS THE ERROR",error)
+        console.log("Unknown Check of User Error: ",error);
       }) 
   } else {
     console.log('CHECKING FOR USER DB CONNECTION')
