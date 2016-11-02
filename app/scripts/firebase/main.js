@@ -90,6 +90,7 @@ ArtHop.prototype.onAuthStateChanged = function(user) {
     this.loginButton.style.display = 'none';
     this.nameDisplay.textContent = "Logged in as " + user.displayName;
     this.checkForUser(user);
+    this.currentUserImage = user.photoURL;
   } else { // User is signed out!
 
     this.logoutButton.style.display = 'none';
