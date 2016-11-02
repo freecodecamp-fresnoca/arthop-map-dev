@@ -3,22 +3,38 @@
 (function() {
 	angular.module('arthopMapApp')
 	.config(['$stateProvider',function($stateProvider) {
-	  var helloState = {
+	  var userState = {
 	    name: 'user',
 	    url: '/user',
 	    template: '<h3>This is the user</h3>',
 			onEnter: loadModal
 	  }
 
-	  var aboutState = {
-	    name: 'about',
-	    url: '/about',
-	    template: '<h3>Its the UI-Router hello world app!</h3>',
+	  var leaderboardState = {
+	    name: 'leaderboard',
+	    url: '/leaderboard',
+	    template: '<h3>This is the leaderboard</h3>',
 			onEnter: loadModal
 	  }
 
-	  $stateProvider.state(helloState);
-	  $stateProvider.state(aboutState);
+		var visitedState = {
+			name: 'visited',
+	    url: '/visited',
+	    template: '<h3>This is the visited state.</h3>',
+			onEnter: loadModal
+		}
+
+		var addedState = {
+			name: 'added',
+	    url: '/added',
+	    template: '<h3>This is where dreams are made added. </h3>',
+			onEnter: loadModal
+		}
+
+	  $stateProvider.state(userState);
+	  $stateProvider.state(leaderboardState);
+		$stateProvider.state(visitedState);
+		$stateProvider.state(addedState);
 	}])
 
 

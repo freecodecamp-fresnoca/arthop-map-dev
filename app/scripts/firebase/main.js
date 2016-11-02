@@ -26,7 +26,7 @@ ArtHop.prototype.loadVenues = function() {
   var self = this;
 
   this.venuesRef.once('value').then(function(data) {
-    self.venues = data.val(); 
+    self.venues = data.val();
   });
 }
 
@@ -90,7 +90,8 @@ ArtHop.prototype.onAuthStateChanged = function(user) {
     this.loginButton.style.display = 'none';
     this.nameDisplay.textContent = "Logged in as " + user.displayName;
     this.checkForUser(user);
-   } else { // User is signed out!
+  } else { // User is signed out!
+
     this.logoutButton.style.display = 'none';
     this.loginButton.style.display = 'block';
     this.nameDisplay.textContent = '';
