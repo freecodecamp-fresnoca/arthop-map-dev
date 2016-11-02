@@ -25,7 +25,7 @@ ArtHop.prototype.loadVenues = function() {
   var venues = [];
 
   this.venuesRef.once('value').then(function(data) {
-    self.venues = data.val(); 
+    self.venues = data.val();
   });
 }
 
@@ -56,12 +56,11 @@ ArtHop.prototype.signOut = function() {
 ArtHop.prototype.onAuthStateChanged = function(user) {
   if (user) { // User is signed in!
     // Get profile pic and user's name from the Firebase user object.
-
     this.logoutButton.style.display = 'block';
     this.loginButton.style.display = 'none';
     this.nameDisplay.textContent = "Logged in as " + user.displayName;
   } else { // User is signed out!
-    
+
     this.logoutButton.style.display = 'none';
     this.loginButton.style.display = 'block';
     this.nameDisplay.textContent = '';
