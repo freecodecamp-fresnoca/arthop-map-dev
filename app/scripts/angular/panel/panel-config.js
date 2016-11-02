@@ -6,29 +6,33 @@
 	  var userState = {
 	    name: 'user',
 	    url: '/user',
-	    template: '<h3>This is the user</h3>',
-			onEnter: loadModal
+	    template: '',
+			onEnter: loadModal,
+			controller: 'userController as ctrl'
 	  }
 
 	  var leaderboardState = {
 	    name: 'leaderboard',
 	    url: '/leaderboard',
 	    template: '<h3>This is the leaderboard</h3>',
-			onEnter: loadModal
+			onEnter: loadModal,
+			controller: 'leaderboardController as ctrl'
 	  }
 
 		var visitedState = {
 			name: 'visited',
 	    url: '/visited',
 	    template: '<h3>This is the visited state.</h3>',
-			onEnter: loadModal
+			onEnter: loadModal,
+			controller: 'visitedController as ctrl'
 		}
 
-		var addedState = {
-			name: 'added',
-	    url: '/added',
+		var addState = {
+			name: 'add',
+	    url: '/add',
 	    template: '<h3>This is where dreams are made added. </h3>',
-			onEnter: loadModal
+			onEnter: loadModal,
+			controller: 'addController as ctrl'
 		}
 
 	  $stateProvider.state(userState);
