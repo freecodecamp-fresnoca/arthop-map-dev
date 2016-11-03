@@ -1,14 +1,20 @@
+// ArtHop (capital A) is the class defintion of the Firebase application 
+// artHop (lowercase a) is the instance of the ArtHop class
 'use strict';
 
-// Initializes ArtHop.
+// Initializes ArtHop object to interact with Firebase
 function ArtHop() {
   this.checkSetup();
 
   // Shortcuts to DOM Elements.
+  // These are appended to the ArtHop object so we can easy access
   this.loginButton = document.getElementById('login');
   this.logoutButton = document.getElementById('logout');
   this.nameDisplay = document.getElementById('sample-text');
+
+  // The users property is used to store the converted users object data into an array
   this.users = [];
+  // This is initialized as a safeguard in googleMaps/map.js #drawMarkers
   this.venues = [];
 
   //Button listeners
@@ -20,17 +26,31 @@ function ArtHop() {
   this.loadUsers();
 }
 
+// Sets up shortcuts to Firebase features and initiate firebase auth.
+ArtHop.prototype.initFirebase = function() {
+  // Shortcuts to Firebase SDK features.
+  this.auth = firebase.auth();
+  this.database = firebase.database();
+  // Initiates Firebase auth and listen to auth state changes.
+  this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
+};
+
+// This function will load and append the venues data onto ArtHop object
 ArtHop.prototype.loadVenues = function() {
+  // This is a property of the ArtHop object which is linked to the Firebase database node of 'venues'  
+  // off() will turn off any previous listeners on that 'venues' node. Leaves one listener
   this.venuesRef = this.database.ref('venues');
   this.venuesRef.off();
   var self = this;
-  var venues = [];
-
+  
+  // This hits the 'venues' node once and grabs that data
+  // the once('value') is saying 'give me the current data as is'
   this.venuesRef.once('value').then(function(data) {
     self.venues = data.val();
   });
 }
 
+// This function will load and append all users onto the ArtHop object
 ArtHop.prototype.loadUsers = function() {
   this.usersRef = this.database.ref('users');
   this.usersRef.off();
@@ -38,6 +58,7 @@ ArtHop.prototype.loadUsers = function() {
 
   function appendUsers(data) {
     var users = data.val();
+    // Iterates over the users object's keys and pushes into the ArtHop object users array
     for(var u in users) {
       self.users.push(users[u]);
     }
@@ -46,12 +67,14 @@ ArtHop.prototype.loadUsers = function() {
   this.usersRef.once('value').then(appendUsers);
 }
 
-ArtHop.prototype.addUserToDatabase = function() {
-  var currentUser = this.auth.currentUser;
+// This function will be called when the user doesn't exist in the Firebase database
+ArtHop.prototype.addUserToDatabase = function(u) {
+  // this.auth.currentUser is gotten from the Firebase library
+  var userData = this.auth.currentUser;
   var user = {
-    email: currentUser.email,
-    username: currentUser.displayName,
-    image: currentUser.photoURL,
+    email: userData.email,
+    username: userData.displayName,
+    image: userData.photoURL,
     locations: {0: "sample"},
     points: 0
   }
@@ -61,29 +84,15 @@ ArtHop.prototype.addUserToDatabase = function() {
   }).catch(function(error){
     console.log('Error:', error);
   });
-  this.currentUser.currentUser = user; 
+  this.checkForUser(u);
 }
 
-// Sets up shortcuts to Firebase features and initiate firebase auth.
-ArtHop.prototype.initFirebase = function() {
-  // Shortcuts to Firebase SDK features.
-  this.auth = firebase.auth();
-  this.database = firebase.database();
-  this.storage = firebase.storage();
-  // Initiates Firebase auth and listen to auth state changes.
-  this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
-};
-
-// Signs-in Friendly Chat.
 ArtHop.prototype.signIn = function() {
-  // Sign in Firebase using popup auth and Google as the identity provider.
   var provider = new firebase.auth.GoogleAuthProvider();
   this.auth.signInWithPopup(provider);
 };
 
-// Signs-out of Friendly Chat.
 ArtHop.prototype.signOut = function() {
-  // Sign out of Firebase.
   this.auth.signOut();
 };
 
@@ -113,7 +122,7 @@ ArtHop.prototype.checkForUser = function(user) {
       .once('value')
       .then(function(data) {
         if(data.val() === null) {
-          window.artHop.addUserToDatabase();
+          window.artHop.addUserToDatabase(user);
         } else {
           var currentUser = data.val();
           window.artHop.rawUser = currentUser;
@@ -124,7 +133,7 @@ ArtHop.prototype.checkForUser = function(user) {
         console.log("Unknown Check of User Error: ",error);
       })
   } else {
-    setTimeout(this.checkForUser(user), 10000);
+    setTimeout(this.checkForUser(user), 1000);
   }
 }
 
@@ -153,5 +162,5 @@ ArtHop.prototype.checkSetup = function() {
 };
 
 window.onload = function() {
-  window.artHop= new ArtHop();
+  window.artHop = new ArtHop();
 };
