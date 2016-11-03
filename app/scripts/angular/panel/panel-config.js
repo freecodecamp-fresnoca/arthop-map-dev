@@ -22,7 +22,7 @@
 		var visitedState = {
 			name: 'visited',
 	    url: '/visited',
-	    templateUrl: '/views/panelStates/user.html',
+	    templateUrl: '/views/panelStates/visited.html',
 			onEnter: loadModal,
 			controller: 'VisitedController as ctrl'
 		}
