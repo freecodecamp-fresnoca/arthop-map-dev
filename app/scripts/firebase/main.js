@@ -51,7 +51,8 @@ ArtHop.prototype.addUserToDatabase = function() {
   this.usersRef.push({
     email: currentUser.email,
     username: currentUser.displayName,
-    locations: ['sample'],
+    image: currentUser.photoURL,
+    locations: {0: "sample"},
     points: 0
   }).then(function() {
     console.log('User has been added to database');
@@ -90,7 +91,6 @@ ArtHop.prototype.onAuthStateChanged = function(user) {
     this.loginButton.style.display = 'none';
     this.nameDisplay.textContent = "Logged in as " + user.displayName;
     this.checkForUser(user);
-    this.currentUserImage = user.photoURL;
   } else { // User is signed out!
 
     this.logoutButton.style.display = 'none';
