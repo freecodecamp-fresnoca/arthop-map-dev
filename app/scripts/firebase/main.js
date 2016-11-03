@@ -9,7 +9,6 @@ function ArtHop() {
   this.logoutButton = document.getElementById('logout');
   this.nameDisplay = document.getElementById('sample-text');
   this.venues = [];
-  this.users = [];
 
   //Button listeners
   this.loginButton.addEventListener('click', this.signIn.bind(this));
@@ -17,13 +16,13 @@ function ArtHop() {
 
   this.initFirebase();
   this.loadVenues();
-  this.loadUsers();
 }
 
 ArtHop.prototype.loadVenues = function() {
   this.venuesRef = this.database.ref('venues');
   this.venuesRef.off();
   var self = this;
+  var venues = [];
 
   this.venuesRef.once('value').then(function(data) {
     self.venues = data.val();
@@ -59,7 +58,6 @@ ArtHop.prototype.addUserToDatabase = function() {
   }).catch(function(error){
     console.log('Error:', error);
   });
-
 }
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
@@ -72,12 +70,14 @@ ArtHop.prototype.initFirebase = function() {
   this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
 };
 
+// Signs-in Friendly Chat.
 ArtHop.prototype.signIn = function() {
   // Sign in Firebase using popup auth and Google as the identity provider.
   var provider = new firebase.auth.GoogleAuthProvider();
   this.auth.signInWithPopup(provider);
 };
 
+// Signs-out of Friendly Chat.
 ArtHop.prototype.signOut = function() {
   // Sign out of Firebase.
   this.auth.signOut();
@@ -90,7 +90,10 @@ ArtHop.prototype.onAuthStateChanged = function(user) {
     this.logoutButton.style.display = 'block';
     this.loginButton.style.display = 'none';
     this.nameDisplay.textContent = "Logged in as " + user.displayName;
+<<<<<<< HEAD
     this.checkForUser(user);
+=======
+>>>>>>> master
   } else { // User is signed out!
 
     this.logoutButton.style.display = 'none';
@@ -98,41 +101,6 @@ ArtHop.prototype.onAuthStateChanged = function(user) {
     this.nameDisplay.textContent = '';
   }
 };
-
-ArtHop.prototype.checkForUser = function(user) {
-  if(window.artHop && window.artHop.usersRef !== undefined) {
-    //check if current user is in database
-    window.artHop.usersRef
-      .orderByChild('email')
-      .equalTo(user.email)
-      .once('value')
-      .then(function(data) {
-        if(data.val() === null) {
-          console.log('User is not in database');
-          window.artHop.addUserToDatabase();
-        } else {
-          var currentUser = data.val();
-          window.artHop.rawUser = currentUser;
-          window.artHop.currentUser = currentUser[Object.keys(currentUser)[0]];
-        }
-      })
-      .catch(function(error) {
-        console.log("Unknown Check of User Error: ",error);
-      }) 
-  } else {
-    console.log('CHECKING FOR USER DB CONNECTION')
-    setTimeout(this.checkForUser, 1000);
-  }
-}
-
-ArtHop.prototype.addPoint = function() {
-  this.currentUserRef = this.database.ref('/users/' + Object.keys(window.artHop.rawUser)[0]);
-  var points;
-  this.currentUserRef.once('value').then(function(data) {
-    points = data.val().points + 1;
-    window.artHop.currentUserRef.update({points: points});
-  });
-}
 
 // Checks that the Firebase SDK has been correctly setup and configured.
 ArtHop.prototype.checkSetup = function() {
