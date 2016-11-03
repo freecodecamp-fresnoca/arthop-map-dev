@@ -29,6 +29,37 @@ ArtHop.prototype.loadVenues = function() {
   });
 }
 
+ArtHop.prototype.loadUsers = function() {
+  this.usersRef = this.database.ref('users');
+  this.usersRef.off();
+  var self = this;
+
+  function appendUsers(data) {
+    var users = data.val();
+    for(var u in users) {
+      self.users.push(users[u]);
+    }
+  }
+
+  this.usersRef.once('value').then(appendUsers);
+}
+
+ArtHop.prototype.addUserToDatabase = function() {
+  var currentUser = this.auth.currentUser;
+
+  this.usersRef.push({
+    email: currentUser.email,
+    username: currentUser.displayName,
+    image: currentUser.photoURL,
+    locations: {0: "sample"},
+    points: 0
+  }).then(function() {
+    console.log('User has been added to database');
+  }).catch(function(error){
+    console.log('Error:', error);
+  });
+}
+
 // Sets up shortcuts to Firebase features and initiate firebase auth.
 ArtHop.prototype.initFirebase = function() {
   // Shortcuts to Firebase SDK features.
@@ -59,6 +90,7 @@ ArtHop.prototype.onAuthStateChanged = function(user) {
     this.logoutButton.style.display = 'block';
     this.loginButton.style.display = 'none';
     this.nameDisplay.textContent = "Logged in as " + user.displayName;
+    this.checkForUser(user);
   } else { // User is signed out!
 
     this.logoutButton.style.display = 'none';
@@ -66,6 +98,41 @@ ArtHop.prototype.onAuthStateChanged = function(user) {
     this.nameDisplay.textContent = '';
   }
 };
+
+ArtHop.prototype.checkForUser = function(user) {
+  if(window.artHop && window.artHop.usersRef !== undefined) {
+    //check if current user is in database
+    window.artHop.usersRef
+      .orderByChild('email')
+      .equalTo(user.email)
+      .once('value')
+      .then(function(data) {
+        if(data.val() === null) {
+          console.log('User is not in database');
+          window.artHop.addUserToDatabase();
+        } else {
+          var currentUser = data.val();
+          window.artHop.rawUser = currentUser;
+          window.artHop.currentUser = currentUser[Object.keys(currentUser)[0]];
+        }
+      })
+      .catch(function(error) {
+        console.log("Unknown Check of User Error: ",error);
+      })
+  } else {
+    console.log('CHECKING FOR USER DB CONNECTION')
+    setTimeout(this.checkForUser, 1000);
+  }
+}
+
+ArtHop.prototype.addPoint = function() {
+  this.currentUserRef = this.database.ref('/users/' + Object.keys(window.artHop.rawUser)[0]);
+  var points;
+  this.currentUserRef.once('value').then(function(data) {
+    points = data.val().points + 1;
+    window.artHop.currentUserRef.update({points: points});
+  });
+}
 
 // Checks that the Firebase SDK has been correctly setup and configured.
 ArtHop.prototype.checkSetup = function() {
