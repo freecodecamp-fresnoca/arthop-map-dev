@@ -8,6 +8,7 @@ function ArtHop() {
   this.loginButton = document.getElementById('login');
   this.logoutButton = document.getElementById('logout');
   this.nameDisplay = document.getElementById('sample-text');
+  this.users = [];
   this.venues = [];
 
   //Button listeners
@@ -16,6 +17,7 @@ function ArtHop() {
 
   this.initFirebase();
   this.loadVenues();
+  this.loadUsers();
 }
 
 ArtHop.prototype.loadVenues = function() {
@@ -46,18 +48,20 @@ ArtHop.prototype.loadUsers = function() {
 
 ArtHop.prototype.addUserToDatabase = function() {
   var currentUser = this.auth.currentUser;
-
-  this.usersRef.push({
+  var user = {
     email: currentUser.email,
     username: currentUser.displayName,
     image: currentUser.photoURL,
     locations: {0: "sample"},
     points: 0
-  }).then(function() {
+  }
+
+  this.usersRef.push(user).then(function() {
     console.log('User has been added to database');
   }).catch(function(error){
     console.log('Error:', error);
   });
+  this.currentUser.currentUser = user; 
 }
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
@@ -100,6 +104,7 @@ ArtHop.prototype.onAuthStateChanged = function(user) {
 };
 
 ArtHop.prototype.checkForUser = function(user) {
+  console.log(window.artHop.usersRef)
   if(window.artHop && window.artHop.usersRef !== undefined) {
     //check if current user is in database
     window.artHop.usersRef
@@ -108,7 +113,6 @@ ArtHop.prototype.checkForUser = function(user) {
       .once('value')
       .then(function(data) {
         if(data.val() === null) {
-          console.log('User is not in database');
           window.artHop.addUserToDatabase();
         } else {
           var currentUser = data.val();
@@ -120,8 +124,7 @@ ArtHop.prototype.checkForUser = function(user) {
         console.log("Unknown Check of User Error: ",error);
       })
   } else {
-    console.log('CHECKING FOR USER DB CONNECTION')
-    setTimeout(this.checkForUser, 1000);
+    setTimeout(this.checkForUser(user), 10000);
   }
 }
 
