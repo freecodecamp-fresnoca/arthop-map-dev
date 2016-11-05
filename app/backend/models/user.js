@@ -5,7 +5,7 @@ var userSchema = new mongoose.Schema({
     email: String,
     imageURL: String,
     points: Number,
-    googleId: String
+    googleId: Number
 });
 
 module.exports = mongoose.model("User", userSchema);

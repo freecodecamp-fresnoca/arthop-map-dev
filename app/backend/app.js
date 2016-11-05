@@ -21,15 +21,15 @@ passport.use(new GoogleStrategy({
     callbackURL: googleAuth.callbackURL
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
-      return cb(err, user)
-    });
+    console.log(profile)
+    User.findOne({googleId: profile.id}, 'email username', function(err, user) {
+      console.log(user, "after find one")
+    })
   }
 ));
 
 app.get('/', (req,res) => {res.send("<a href='/auth/google'>Google login</a>")})
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
-
+app.get('/auth/google', passport.authenticate('google', { scope: ['email'] }))
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
   // Successful authentication, redirect home.
   console.log(req, " || ", res)
