@@ -1,4 +1,4 @@
-let express        = require('express'),
+const express        = require('express'),
     app            = express(),
     bodyParser     = require("body-parser"),
     mongoose       = require("mongoose"),
@@ -20,16 +20,36 @@ passport.use(new GoogleStrategy({
     clientSecret: googleAuth.clientSecret,
     callbackURL: googleAuth.callbackURL
   },
-  function(accessToken, refreshToken, profile, cb) {
-    console.log(profile)
-    User.findOne({googleId: profile.id}, 'email username', function(err, user) {
-      console.log(user, "after find one")
+  function (accessToken, refreshToken, profile, cb) {
+    User.find({email: profile.email}, (err, user) => {
+      if(err) {
+        console.log("Error", err)
+      } else {
+        if(user.length !== 0) {
+          console.log("Found", user)
+          return cb(err, user);
+        } else {
+          let newUser = User({
+            username: profile.displayName, 
+            email: profile.emails[0].value, 
+            photoURL: profile.photos[0].value,
+            googleId: profile.id,
+            points: 0,
+            locations: []
+          })
+          newUser.save((err) => {
+            if (err) throw err;
+            console.log("USER CREATED")
+            return cb(err,user)
+          })  
+        }
+      }
     })
   }
 ));
 
 app.get('/', (req,res) => {res.send("<a href='/auth/google'>Google login</a>")})
-app.get('/auth/google', passport.authenticate('google', { scope: ['email'] }))
+app.get('/auth/google', passport.authenticate('google', { scope: ['email profile'] }))
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
   // Successful authentication, redirect home.
   console.log(req, " || ", res)
