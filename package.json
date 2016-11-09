@@ -39,7 +39,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "karma start test/karma.conf.js"
+    "test": "karma start test/karma.conf.js",
+    "start": "nodemon app/app.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
