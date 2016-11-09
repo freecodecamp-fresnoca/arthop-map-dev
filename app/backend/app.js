@@ -16,23 +16,23 @@ mongoose.connect("localhost:27017")
 app.use(bodyParser.json()) 
 app.use(methodOverride('_method')) 
 app.use(morgan('dev')) 
-app.use(cookieParser());
+app.use(cookieParser())
 app.use(session({ 
   secret: '#jessie #teamdonut #triggered' ,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: true  }
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+})
+app.use(passport.initialize())
+app.use(passport.session())
 
 passport.serializeUser(function(user, done) {
-  done(null, user);
-});
+  done(null, user)
+})
 
 passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
+  done(null, user)
+})
 
 passport.use(new GoogleStrategy({
     clientID        : googleAuth.clientID,
@@ -44,39 +44,42 @@ passport.use(new GoogleStrategy({
     // User.findOne won't fire until we have all our data back from Google
     process.nextTick(function() {
       // try to find the user based on their google id
-      User.findOne({ 'google.id' : profile.id }, function(err, user) {
+      User.findOne({ 'googleId' : profile.id }, function(err, user) {
         if (err)
           return done(err);
         if (user) {
           // if a user is found, log them in
+          console.log("\n\n\nUser already exists\n\n\n")
           return done(null, user);
         } else {
+          console.log("\n\n\nSaving new user to database\n\n\n")
           // if the user isnt in our database, create a new user
           var newUser          = new User();
           // set all of the relevant information
-          newUser.id    = profile.id;
-          newUser.token = token;
+          newUser.googleId    = profile.id;
+          newUser.googleToken = token;
           newUser.username  = profile.displayName;
           newUser.email = profile.emails[0].value; // pull the first email
+          newUser.points = 0
+          newUser.locations = ["sample","stuff"]
           // save the user
           newUser.save(function(err) {
             if (err)
                 throw err;
             return done(null, newUser);
-          });
+          })
         }
-      });
-    });
+      })
+    })
   })
-);
+)
 
 app.get('/', (req,res) => {res.send("<a href='/auth/google'>Google login</a>")})
 app.get('/auth/google', passport.authenticate('google', { scope: ['email profile'] }))
 
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
   // Successful authentication, redirect home.
-  console.log('\n\n\n\n\n\n\n',res,'\n\n\n\n\n\n')
-  res.send('Success')
+  res.send("Success<a href='/auth/google'>Google login</a>")
 })
 
 app.get('/logout', function(req, res) {
@@ -84,7 +87,7 @@ app.get('/logout', function(req, res) {
   res.redirect('/');
 })
 
-app.use('/venues',venues);
+app.use('/venues',venues)
 
 let server = app.listen(3333, function(){
    console.log("ArtHop backend server started.")
