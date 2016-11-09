@@ -132,14 +132,7 @@ function myMap() {
 
   map.fitBounds(cityPolygon.getBounds());
   cityPolygon.setMap(map);
-  drawMarkers();
+  var mapDataObj = new mapData(map);
+  mapDataObj.getMarkers();
 }
 
-function drawMarkers() {
-  if(window.artHop && window.artHop.venues.length !== 0) {
-    var mapDataObj = new mapData(map);
-    mapDataObj.getMarkers();
-  } else {
-    setTimeout(drawMarkers, 500);
-  }
-}

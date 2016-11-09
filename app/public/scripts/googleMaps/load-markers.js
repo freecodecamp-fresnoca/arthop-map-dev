@@ -18,9 +18,12 @@ function mapData(map) {
 }
 
 function loadMarkers() {
+  console.log("AM I HERE?")
   var markers = [];
   var venues = [];
   $.get('/venues',function(data) {
+    console.log('INSIDE GET')
+    console.log(data)
     venues = data
     venues.forEach(function(venue) {
       var position = venue.location;
