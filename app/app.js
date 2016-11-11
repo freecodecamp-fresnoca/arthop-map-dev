@@ -9,8 +9,6 @@ const express      = require('express'),
     passport       = require('passport'),
     User           = require('./backend/models/user.js'),
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-    cookieParser   = require('cookie-parser'),
-    session        = require('express-session'),
     path           = require('path'),
     BearerStrategy = require('passport-http-bearer').Strategy
 
@@ -86,11 +84,6 @@ app.get(
 app.get('/logout', function(req, res) {
   req.logout()
   res.redirect('/')
-})
-
-app.get('/test', function(req, res) {
-  var sess = req.session
-  console.log(sess,"\n\n\nSESSSSSSION")
 })
 
 app.use('/venues', venues)
