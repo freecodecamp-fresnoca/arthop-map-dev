@@ -5,6 +5,7 @@
 /bower_components
 .DS_Store
 *.swp
-app/scripts/firebaseConfig.js
 app/scripts/config.js
-
+app/scripts/firebaseConfig.js
+app/backend/config/googleAuth.js
+app/public/bower_components

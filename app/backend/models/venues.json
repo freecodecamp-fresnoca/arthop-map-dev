@@ -1,0 +1,379 @@
+ [ {
+  "address" : "700 Van Ness Ave",
+  "businessKey" : "59DAYSOFAWESOME",
+  "location" : {
+    "lat" : 36.731962,
+    "lng" : -119.785874
+  },
+  "name" : "Bitwise",
+  "type" : "lens"
+}, {
+  "address" : "1245 Van Ness Ave",
+  "businessKey" : "ROUNDTABLE",
+  "location" : {
+    "lat" : 36.73729,
+    "lng" : -119.79222
+  },
+  "name" : "Fresno Arts Council",
+  "type" : "mall"
+}, {
+  "address" : "745 Fulton St",
+  "businessKey" : "99GOLDEN",
+  "location" : {
+    "lat" : 36.730862,
+    "lng" : -119.78858
+  },
+  "name" : "Tioga",
+  "type" : "yeo"
+}, {
+  "address" : "2600 Fresno St",
+  "businessKey" : "CITYHALLROCKS",
+  "location" : {
+    "lat" : 36.73962,
+    "lng" : -119.784619
+  },
+  "name" : "Fresno City Hall",
+  "type" : "yeo"
+}, {
+  "address" : "1857 Fulton Street",
+  "businessKey" : "ARTNIGHTMUSEUM",
+  "location" : {
+    "lat" : 36.742689,
+    "lng" : -119.799831
+  },
+  "name" : "African American Historical & Cultural Museum",
+  "type" : "mall"
+}, {
+  "address" : "1821 Calaveras St",
+  "businessKey" : "gallery1821",
+  "location" : {
+    "lat" : 36.739001,
+    "lng" : -119.798548
+  },
+  "name" : "1821 Gallery",
+  "type" : "mall"
+}, {
+  "address" : "1630 Van Ness",
+  "businessKey" : "arteam1630",
+  "location" : {
+    "lat" : 36.741386,
+    "lng" : -119.795738
+  },
+  "name" : "Arte Americas",
+  "type" : "lens"
+}, {
+  "address" : "1612 H St.",
+  "businessKey" : "arthouse1612",
+  "location" : {
+    "lat" : 36.738966,
+    "lng" : -119.798839
+  },
+  "name" : "Arthouse",
+  "type" : "yeo"
+}, {
+  "address" : "1929 Fresno Street",
+  "businessKey" : "cjs",
+  "location" : {
+    "lat" : 36.735992,
+    "lng" : -119.792874
+  },
+  "name" : "Chris Janzen Studio",
+  "type" : "yeo"
+}, {
+  "address" : "2223 S Van Ness Ave",
+  "businessKey" : "chrissorensen2223",
+  "location" : {
+    "lat" : 36.719468,
+    "lng" : -119.778862
+  },
+  "name" : "Chris Sorensen Studio",
+  "type" : "yeo"
+}, {
+  "address" : "1752 Van Ness Ave.",
+  "businessKey" : "billbruce1752",
+  "location" : {
+    "lat" : 36.742546,
+    "lng" : -119.797357
+  },
+  "name" : "Bill Bruce Studio",
+  "type" : "yeo"
+}, {
+  "address" : "905 R Street",
+  "businessKey" : "boom",
+  "location" : {
+    "lat" : 36.738947,
+    "lng" : -119.781684
+  },
+  "name" : "Clay Hands Studios",
+  "type" : "yeo"
+}, {
+  "address" : "1207 S. Trinity St",
+  "businessKey" : "bigpicture",
+  "location" : {
+    "lat" : 36.730273,
+    "lng" : -119.807915
+  },
+  "name" : "Big Picture Middle and High School Fresno",
+  "type" : "yeo"
+}, {
+  "address" : "1555 Van Ness Ave",
+  "businessKey" : "communitycmac",
+  "location" : {
+    "lat" : 36.7402706,
+    "lng" : -119.7978937
+  },
+  "name" : "Community Media Access Collaborative (CMAC)",
+  "type" : "yeo"
+}, {
+  "address" : "1612 Fulton St #128",
+  "businessKey" : "beautyria",
+  "location" : {
+    "lat" : 36.7408073,
+    "lng" : -119.799681
+  },
+  "name" : "Euphoria 1612 Hair & Nail Salon",
+  "type" : "yeo"
+}, {
+  "address" : "1612 Fulton St #105",
+  "businessKey" : "vintageevo",
+  "location" : {
+    "lat" : 36.7408073,
+    "lng" : -119.799681
+  },
+  "name" : "Evolve Vintage",
+  "type" : "yeo"
+}, {
+  "address" : "2444 Fresno St",
+  "businessKey" : "waterintower",
+  "location" : {
+    "lat" : 36.7392069,
+    "lng" : -119.7894104
+  },
+  "name" : "FAC Water Tower",
+  "type" : "yeo"
+}, {
+  "address" : "1432 Fulton St",
+  "businessKey" : "placeoffrank",
+  "location" : {
+    "lat" : 36.7382363,
+    "lng" : -119.7967949
+  },
+  "name" : "Frank's Place at Warnors",
+  "type" : "yeo"
+}, {
+  "address" : "1755 Broadway St",
+  "businessKey" : "ideasinfresno",
+  "location" : {
+    "lat" : 36.740603,
+    "lng" : -119.8020887
+  },
+  "name" : "Fresno Ideaworks",
+  "type" : "yeo"
+}, {
+  "address" : "1419 M Street",
+  "businessKey" : "stateofart",
+  "location" : {
+    "lat" : 36.7401621,
+    "lng" : -119.794227
+  },
+  "name" : "Fresno State Graduate Art Studios",
+  "type" : "yeo"
+}, {
+  "address" : "644 Van Ness Ave",
+  "businessKey" : "figsingallery",
+  "location" : {
+    "lat" : 36.7315973,
+    "lng" : -119.7874744
+  },
+  "name" : "Fig Tree Gallery",
+  "type" : "yeo"
+}, {
+  "address" : "2223 S Van Ness",
+  "businessKey" : "twentyfive",
+  "location" : {
+    "lat" : 36.719058,
+    "lng" : -119.7804394
+  },
+  "name" : "Gallery 25",
+  "type" : "yeo"
+}, {
+  "address" : "155 Van Ness Ave",
+  "businessKey" : "beatingheart",
+  "location" : {
+    "lat" : 36.726345,
+    "lng" : -119.7827347
+  },
+  "name" : "Heart Beat Boxing",
+  "type" : "yeo"
+}, {
+  "address" : "1415 Fulton St",
+  "businessKey" : "kynokjwl",
+  "location" : {
+    "lat" : 36.73797,
+    "lng" : -119.7973717
+  },
+  "name" : "Jewel FM Art Gallery",
+  "type" : "yeo"
+}, {
+  "address" : "2746 Lorena Ave",
+  "businessKey" : "glassski",
+  "location" : {
+    "lat" : 36.7194535,
+    "lng" : -119.7809504
+  },
+  "name" : "Kliszewski Glass",
+  "type" : "yeo"
+}, {
+  "address" : "1231 Van Ness Ave",
+  "businessKey" : "rockykocky",
+  "location" : {
+    "lat" : 36.7369119,
+    "lng" : -119.7943008
+  },
+  "name" : "Kocky's Bar & Grill",
+  "type" : "yeo"
+}, {
+  "address" : "617 Broadway St",
+  "businessKey" : "lannabanana",
+  "location" : {
+    "lat" : 36.7293978,
+    "lng" : -119.7894951
+  },
+  "name" : "Lanna Coffee Co",
+  "type" : "yeo"
+}, {
+  "address" : "2405 Tulare St",
+  "businessKey" : "first5fresno",
+  "location" : {
+    "lat" : 36.7373081,
+    "lng" : -119.7878891
+  },
+  "name" : "Lighthouse for Children",
+  "type" : "yeo"
+}, {
+  "address" : "1419 M Street",
+  "businessKey" : "artiscomplex",
+  "location" : {
+    "lat" : 36.7401621,
+    "lng" : -119.794227
+  },
+  "name" : "M Street Art Complex",
+  "type" : "yeo"
+}, {
+  "address" : "1901 Fulton St #111",
+  "businessKey" : "powerfulmotive",
+  "location" : {
+    "lat" : 36.7428667,
+    "lng" : -119.8026056
+  },
+  "name" : "Motive Power",
+  "type" : "yeo"
+}, {
+  "address" : "1243 Fulton Mall",
+  "businessKey" : "peevelocalmarket",
+  "location" : {
+    "lat" : 36.7363907,
+    "lng" : -119.7954288
+  },
+  "name" : "Peeve's Public House",
+  "type" : "yeo"
+}, {
+  "address" : "905 R Street",
+  "businessKey" : "harrypottery",
+  "location" : {
+    "lat" : 36.73895,
+    "lng" : -119.7838717
+  },
+  "name" : "Potters Studio & Olsen Gallery of Fine Crafts",
+  "type" : "yeo"
+}, {
+  "address" : "2015 Tuolumne St",
+  "businessKey" : "goodteaco",
+  "location" : {
+    "lat" : 36.7382173,
+    "lng" : -119.796496
+  },
+  "name" : "Raizana Tea Company",
+  "type" : "yeo"
+}, {
+  "address" : "701 R Street",
+  "businessKey" : "robbystudios",
+  "location" : {
+    "lat" : 36.7367544,
+    "lng" : -119.7808775
+  },
+  "name" : "Robert Ogata Studio",
+  "type" : "yeo"
+}, {
+  "address" : "2055 San Joaquin St",
+  "businessKey" : "romainhistory",
+  "location" : {
+    "lat" : 36.741523,
+    "lng" : -119.7994597
+  },
+  "name" : "Prettyman Promos",
+  "type" : "yeo"
+}, {
+  "address" : "4250 E Tulare St",
+  "businessKey" : "theoartschool",
+  "location" : {
+    "lat" : 36.7424158,
+    "lng" : -119.7557361
+  },
+  "name" : "Roosevelt School of the Arts",
+  "type" : "yeo"
+}, {
+  "address" : "1241 Van Ness",
+  "businessKey" : "saltandpeppertrends",
+  "location" : {
+    "lat" : 36.7370823,
+    "lng" : -119.7942738
+  },
+  "name" : "Seasoned Trends Studio",
+  "type" : "yeo"
+}, {
+  "address" : "654 Van Ness Ave",
+  "businessKey" : "studioofsalazar",
+  "location" : {
+    "lat" : 36.7315278,
+    "lng" : -119.787706
+  },
+  "name" : "Silva Salazar Studios",
+  "type" : "yeo"
+}, {
+  "address" : "1540 M St",
+  "businessKey" : "fpchurch0451",
+  "location" : {
+    "lat" : 36.7418509,
+    "lng" : -119.7951327
+  },
+  "name" : "First Presbyterian Church",
+  "type" : "yeo"
+}, {
+  "address" : "1416 Broadway St",
+  "businessKey" : "liquidfet",
+  "location" : {
+    "lat" : 36.7376886,
+    "lng" : -119.797773
+  },
+  "name" : "The LF Gallery",
+  "type" : "yeo"
+}, {
+  "address" : "2139 Kern St",
+  "businessKey" : "coffeeandbread",
+  "location" : {
+    "lat" : 36.7343111,
+    "lng" : -119.7895214
+  },
+  "name" : "Tree of Life Cafe & Bakery",
+  "type" : "yeo"
+}, {
+  "address" : "1060 Fulton Mall",
+  "businessKey" : "westvaluefresno",
+  "location" : {
+    "lat" : 36.734866,
+    "lng" : -119.7932797
+  },
+  "name" : "The Vault @ Pacific Southwest Building",
+  "type" : "yeo"
+} ]

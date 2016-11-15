@@ -3,7 +3,8 @@ node_js:
           - "6.*"
 before_script:
           - npm install grunt-cli -g
+          - npm install bower -g
           # - bower install
 script:
-          - bower install
+          - cd app/public/ && bower install
           # - grunt test
