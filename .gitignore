@@ -8,4 +8,4 @@
 app/scripts/config.js
 app/scripts/firebaseConfig.js
 app/backend/config/googleAuth.js
-app/backend/bower_components
+app/public/bower_components
