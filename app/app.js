@@ -44,22 +44,22 @@ passport.use(new GoogleStrategy({
 )
 
 passport.use(
-    new BearerStrategy(
-        function(token, done) {
-            User.findOne({ access_token: token },
-                function(err, user) {
-                    if(err) {
-                        return done(err)
-                    }
-                    if(!user) {
-                        return done(null, false)
-                    }
+  new BearerStrategy(
+    function(token, done) {
+      User.findOne({ access_token: token },
+        function(err, user) {
+          if(err) {
+            return done(err)
+          }
+          if(!user) {
+            return done(null, false)
+          }
 
-                    return done(null, user, { scope: 'all' })
-                }
-            );
+          return done(null, user, { scope: 'all' })
         }
-    )
+      );
+    }
+  )
 );
 
 
@@ -77,7 +77,6 @@ app.get(
     passport.authenticate('bearer', { session: false }),
     function(req, res) {
       res.redirect('/')
-        // res.send("LOGGED IN as " + req.user.toString() + " - <a href=\"/logout\">Log out</a>");
     }
 );
 
