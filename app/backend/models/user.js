@@ -5,7 +5,7 @@ var userSchema = new mongoose.Schema({
     email: String,
     imageURL: String,
     points: Number,
-    googleId: Number,
+    google: String,
     access_token: { type: String }
 });
 

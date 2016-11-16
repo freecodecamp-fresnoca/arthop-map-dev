@@ -7,7 +7,7 @@
     $authProvider.httpInterceptor = function() { return true; },
     $authProvider.withCredentials = false;
     $authProvider.tokenRoot = null;
-    $authProvider.baseUrl = '/';
+    $authProvider.baseUrl = 'http://localhost:3333'
     $authProvider.loginUrl = '/auth/login';
     $authProvider.unlinkUrl = '/auth/unlink/';
     $authProvider.tokenName = 'token';
@@ -32,6 +32,7 @@
       popupOptions: { width: 452, height: 633 } //maybe change due to mobile screen size
     });
      
+    console.log($authProvider)
 
 	  var userState = {
 	    name: 'user',
@@ -90,11 +91,14 @@
 
 			};
 		})
-    .controller( 'panelCtrl', ['$scope', '$http', function( $scope, $http ) {
+    .controller( 'panelCtrl', ['$scope', '$http', '$auth', function( $scope, $http, $auth ) {
       $http.get('/venues').success(function(data) {
         $scope.venues = data
+        $scope.authenticate = function(provider) {
+          $auth.authenticate(provider);
+        }
       })     
-    }]);
+    }])
 })(window.angular);
 
 function loadModal(){
