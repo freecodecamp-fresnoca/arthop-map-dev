@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true  }))
 app.use(methodOverride('_method')) 
 app.use(morgan('dev')) 
 
+const TOKEN_SECRET = "secrit secrit"
 /*
  |--------------------------------------------------------------------------
  | Login Required Middleware
@@ -36,7 +37,7 @@ function ensureAuthenticated(req, res, next) {
 
   var payload = null;
   try {
-    payload = jwt.decode(token, config.TOKEN_SECRET);
+    payload = jwt.decode(token, TOKEN_SECRET);
   }
   catch (err) {
     return res.status(401).send({ message: err.message });
@@ -60,7 +61,7 @@ function createJWT(user) {
     iat: moment().unix(),
     exp: moment().add(14, 'days').unix()
   };
-  return jwt.encode(payload, "secrit secrit");
+  return jwt.encode(payload, TOKEN_SECRET);
 }
 
 /*
@@ -112,11 +113,9 @@ app.post('/auth/google/', function(req, res) {
   request.post(accessTokenUrl, { json: true, form: params }, function(err, response, token) {
     var accessToken = token.access_token;
     var headers = { Authorization: 'Bearer ' + accessToken };
-    console.log(headers, "\n\n", accessToken)
     // Step 2. Retrieve profile information about the current user.
     request.get({ url: peopleApiUrl, headers: headers, json: true }, function(err, response, profile) {
       if (profile.error) {
-        console.log(profile.error)
         return res.status(500).send({message: profile.error.message});
       }
       // Step 3a. Link user accounts.
@@ -126,7 +125,7 @@ app.post('/auth/google/', function(req, res) {
             return res.status(409).send({ message: 'There is already a Google account that belongs to you' });
           }
           var token = req.header('Authorization').split(' ')[1];
-          var payload = jwt.decode(token, config.TOKEN_SECRET);
+          var payload = jwt.decode(token, TOKEN_SECRET);
           User.findById(payload.sub, function(err, user) {
             if (!user) {
               return res.status(400).send({ message: 'User not found' });
@@ -134,6 +133,7 @@ app.post('/auth/google/', function(req, res) {
             user.google = profile.sub;
             user.picture = user.picture || profile.picture.replace('sz=50', 'sz=200');
             user.displayName = user.displayName || profile.name;
+            user.email = user.email || profile.email
             user.points = user.points || 0
             user.save(function() {
               var token = createJWT(user);
@@ -148,9 +148,11 @@ app.post('/auth/google/', function(req, res) {
             return res.send({ token: createJWT(existingUser) });
           }
           var user = new User();
+          console.log({profile: profile})
           user.google = profile.sub;
           user.picture = profile.picture.replace('sz=50', 'sz=200');
           user.displayName = profile.name;
+          user.email = profile.email
           user.points = 0
           user.save(function(err) {
             var token = createJWT(user);

@@ -3,7 +3,6 @@
 (function() {
 	angular.module('arthopMapApp')
 	.config(['$stateProvider', '$authProvider',function($stateProvider, $authProvider) {
-    console.log({$authProvider})
     $authProvider.httpInterceptor = function() { return true; },
     $authProvider.withCredentials = false;
     $authProvider.tokenRoot = null;
@@ -31,8 +30,6 @@
       oauthType: '2.0',
       popupOptions: { width: 452, height: 633 } //maybe change due to mobile screen size
     });
-     
-    console.log($authProvider)
 
 	  var userState = {
 	    name: 'user',
@@ -79,16 +76,14 @@
 			return {
 				restrict: "E",
 				templateUrl: "views/panel/panel-button.html",
-                controller: "panelCtrl"
-
+          controller: "panelCtrl"
 			};
 		})
 		.directive("searchModal", function() {
 			return {
 				restrict: "E",
 				templateUrl: "views/panel/panel-modal.html",
-                controller: "panelCtrl"
-
+          controller: "panelCtrl"
 			};
 		})
     .controller( 'panelCtrl', ['$scope', '$http', '$auth', function( $scope, $http, $auth ) {
