@@ -84,7 +84,17 @@
 		})
     .controller( 'panelCtrl', ['$scope', '$http', '$auth', function( $scope, $http, $auth ) {
       $scope.authenticate = function(provider) {
-        $auth.authenticate(provider)        
+        $auth.authenticate(provider).then(function(data) {
+          $http.get('/api/me').then(function(res) {
+            $scope.user = res.data
+          }, function(err) {
+            console.log('Sorry could\'t retrieve user information', err)
+          })
+        })       
+      }
+
+      $scope.isAuthenticated = function() {
+        return $auth.isAuthenticated();
       }
 
       $http.get('/venues').success(function(data) {
@@ -96,6 +106,11 @@
         $scope.user = res.data
       }, function (err) {
         console.log("Sorry couldn't retrieve user information", err)
+        // prompt login or redirect to login state
+        // TODO:
+        // 1. add login state
+        // 2. protect other states if not authenticated
+        // 3. Push code and do pull request
       })
     }])
 })(window.angular);

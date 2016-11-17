@@ -14,13 +14,18 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">
 
+          <div ng-if="isAuthenticated()">
             <strong>
               <a ui-sref="user" ui-sref-active="active">User</a>
               <a ui-sref="leaderboard" ui-sref-active="active">Leaderboard</a>
               <a ui-sref="visited" ui-sref-active="active">Visited</a>
               <a ui-sref="add" ui-sref-active="active">Add</a>
+              <a href="#">Logout</a>
             </strong>
-
+          </div>
+          <div ng-if="!isAuthenticated">
+            <a href="#">Log In</a>
+          </div>
         </h4>
       </div>
       <div class="modal-body">
