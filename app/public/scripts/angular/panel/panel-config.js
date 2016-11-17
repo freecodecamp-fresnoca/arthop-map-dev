@@ -68,10 +68,6 @@
 		$stateProvider.state(visitedState);
 		$stateProvider.state(addState);
 	}])
-
-
-
-
 		.directive("searchButton", function() {
 			return {
 				restrict: "E",
@@ -87,12 +83,20 @@
 			};
 		})
     .controller( 'panelCtrl', ['$scope', '$http', '$auth', function( $scope, $http, $auth ) {
+      $scope.authenticate = function(provider) {
+        $auth.authenticate(provider)        
+      }
+
       $http.get('/venues').success(function(data) {
         $scope.venues = data
-        $scope.authenticate = function(provider) {
-          $auth.authenticate(provider);
-        }
-      })     
+      })         
+
+      $http.get('/api/me').then(function (res) {
+        console.log('user....', res)
+        $scope.user = res.data
+      }, function (err) {
+        console.log("Sorry couldn't retrieve user information", err)
+      })
     }])
 })(window.angular);
 
