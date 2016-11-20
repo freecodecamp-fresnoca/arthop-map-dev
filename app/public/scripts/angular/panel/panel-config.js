@@ -31,6 +31,14 @@
       popupOptions: { width: 452, height: 633 } //maybe change due to mobile screen size
     });
 
+    var loginState = {
+      name: 'login',
+      url: '/login',
+      templateUrl: '/views/panelStates/login.html',
+      onEnter: loadModal,
+      controller: 'UserController as ctrl'
+    }
+
 	  var userState = {
 	    name: 'user',
 	    url: '/user',
@@ -63,6 +71,7 @@
 			controller: 'AddController as ctrl'
 		}
 
+    $stateProvider.state(loginState);
 	  $stateProvider.state(userState);
 	  $stateProvider.state(leaderboardState);
 		$stateProvider.state(visitedState);
@@ -82,11 +91,12 @@
           controller: "panelCtrl"
 			};
 		})
-    .controller( 'panelCtrl', ['$scope', '$http', '$auth', function( $scope, $http, $auth ) {
+    .controller( 'panelCtrl', ['$scope', '$http', '$auth', '$state', function( $scope, $http, $auth, $state ) {
       $scope.authenticate = function(provider) {
         $auth.authenticate(provider).then(function(data) {
           $http.get('/api/me').then(function(res) {
             $scope.user = res.data
+            $state.go('user')
           }, function(err) {
             console.log('Sorry could\'t retrieve user information', err)
           })
@@ -101,17 +111,27 @@
         $scope.venues = data
       })         
 
+      if($scope.isAuthenticated())
       $http.get('/api/me').then(function (res) {
         console.log('user....', res)
         $scope.user = res.data
+        $state.go('user')
       }, function (err) {
         console.log("Sorry couldn't retrieve user information", err)
-        // prompt login or redirect to login state
-        // TODO:
-        // 1. add login state
-        // 2. protect other states if not authenticated
-        // 3. Push code and do pull request
+        $state.go('login')
       })
+
+      $scope.logout = function() {
+        $auth.unlink('google')
+          .then(function(response) {
+            $auth.removeToken()
+            $state.go('login')
+          })
+          .catch(function(response) {
+            // Handle errors here.
+            console.log('Error with loggin you out.')
+          }); 
+      }
     }])
 })(window.angular);
 
