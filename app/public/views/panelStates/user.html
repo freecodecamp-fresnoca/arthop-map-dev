@@ -1,1 +1,24 @@
-<div><h2>Display Name: {{user.displayName}}</h2></div>
+<style>
+
+.user-center {
+  font-weight: 600;
+  text-align: center;
+}
+
+.user-subText {
+  font-weight: 300;
+}
+
+.profile-photo {
+  border-radius: 50%;
+  height: 20%;
+  width: auto;
+}
+
+</style>
+<button ng-if="!isAuthenticated()" ng-click="authenticate('google')">Sign in with Google</button>
+<div class="user-center">
+  <img src={{user.picture}} class="profile-photo"/>
+  <h2>Display Name <br><h3 class="user-subText">{{user.displayName}}</h3></h2>
+  <h2>Score <br><h3 class="user-subText">{{user.points}}</h3></h2>
+</div>

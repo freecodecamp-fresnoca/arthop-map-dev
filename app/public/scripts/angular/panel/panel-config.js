@@ -100,7 +100,7 @@
           }, function(err) {
             console.log('Sorry could\'t retrieve user information', err)
           })
-        })       
+        })
       }
 
       $scope.isAuthenticated = function() {
@@ -109,11 +109,11 @@
 
       $http.get('/venues').success(function(data) {
         $scope.venues = data
-      })         
+      })
 
       if($scope.isAuthenticated())
       $http.get('/api/me').then(function (res) {
-        console.log('user....', res)
+        //console.log('user....', res)
         $scope.user = res.data
         $state.go('user')
       }, function (err) {
