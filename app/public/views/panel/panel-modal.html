@@ -20,11 +20,11 @@
               <a ui-sref="leaderboard" ui-sref-active="active">Leaderboard</a>
               <a ui-sref="visited" ui-sref-active="active">Visited</a>
               <a ui-sref="add" ui-sref-active="active">Add</a>
-              <a href="#">Logout</a>
+              <a href="#" ng-click="logout()">Logout</a>
             </strong>
           </div>
-          <div ng-if="!isAuthenticated">
-            <a href="#">Log In</a>
+          <div ng-if="!isAuthenticated()">
+            <a ui-sref="login" ui-sref-active="active">Log In</a>
           </div>
         </h4>
       </div>
