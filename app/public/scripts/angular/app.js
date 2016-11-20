@@ -14,5 +14,6 @@ angular
     'ngCookies',
     'ngResource',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'satellizer'
   ]);

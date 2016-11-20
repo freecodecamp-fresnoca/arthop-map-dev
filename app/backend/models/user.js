@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
 var userSchema = new mongoose.Schema({
-    username: String,
+    displayName: String,
     email: String,
-    imageURL: String,
+    picture: String,
     points: Number,
-    googleId: Number,
+    google: String,
     access_token: { type: String }
 });
 

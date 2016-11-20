@@ -1,0 +1,15 @@
+<style>
+td{
+  padding: 2vmin;
+  width: 15%;
+}
+</style>
+
+<h1>Leaderboard</h1>
+<table>
+    <tr class="table-row" ng-repeat="current in ctrl.userslist | orderBy:'-score'">
+       <td>{{$index + 1}}</td>
+       <td>{{current.displayName}}</td>
+       <td>{{current.score}}</td>
+    </tr>
+</table>
