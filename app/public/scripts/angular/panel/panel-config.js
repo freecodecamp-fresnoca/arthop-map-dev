@@ -35,7 +35,6 @@
       name: 'login',
       url: '/login',
       templateUrl: '/views/panelStates/login.html',
-      onEnter: loadModal,
       controller: 'UserController as ctrl'
     }
 
@@ -43,7 +42,6 @@
 	    name: 'user',
 	    url: '/user',
 	    templateUrl: '/views/panelStates/user.html',
-			onEnter: loadModal,
 			controller: 'UserController as ctrl'
 	  }
 
@@ -51,7 +49,6 @@
 	    name: 'leaderboard',
 	    url: '/leaderboard',
 	    templateUrl: '/views/panelStates/leaderboard.html',
-			onEnter: loadModal,
 			controller: 'LeaderboardController as ctrl'
 	  }
 
@@ -59,7 +56,6 @@
 			name: 'visited',
 	    url: '/visited',
 	    templateUrl: '/views/panelStates/visited.html',
-			onEnter: loadModal,
 			controller: 'VisitedController as ctrl'
 		}
 
@@ -67,11 +63,14 @@
 			name: 'add',
 	    url: '/add',
 	    templateUrl: '/views/panelStates/add.html',
-			onEnter: loadModal,
 			controller: 'AddController as ctrl'
 		}
 
+    //when opening panel it still redirects to login state
+
     $stateProvider.state(loginState);
+
+    //when opening panel it still redirects to login state
 	  $stateProvider.state(userState);
 	  $stateProvider.state(leaderboardState);
 		$stateProvider.state(visitedState);
@@ -99,6 +98,7 @@
             $state.go('user')
           }, function(err) {
             console.log('Sorry could\'t retrieve user information', err)
+            $state.go('login')
           })
         })
       }
@@ -130,6 +130,7 @@
           .catch(function(response) {
             // Handle errors here.
             console.log('Error with loggin you out.')
+            $state.go('user')
           }); 
       }
     }])
