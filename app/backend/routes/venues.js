@@ -4,7 +4,10 @@ const venues  = require('../models/venue.js'),
       router  = express.Router()
 
 router.get('/', (req,res,next) => {
-  res.send(venues())
+  let output = venues().map(x => {
+    return {name: x.name, address: x.address, location: {lat: x.location.lat, lng: x.location.lng}, type: x.type}
+  })
+  res.send(output)
 })
 
 module.exports = router
