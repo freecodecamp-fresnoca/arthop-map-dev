@@ -79,8 +79,7 @@
 		.directive("searchButton", function() {
 			return {
 				restrict: "E",
-				templateUrl: "views/panel/panel-button.html",
-          controller: "panelCtrl"
+				templateUrl: "views/panel/panel-button.html"
 			};
 		})
 		.directive("searchModal", function() {
