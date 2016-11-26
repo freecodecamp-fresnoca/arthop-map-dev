@@ -1,6 +1,5 @@
 function AddController() {
   var ctrl = this;
-
   //CODE
   console.log('Spooky')
 }

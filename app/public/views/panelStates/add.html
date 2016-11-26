@@ -1,1 +1,16 @@
-<h1>Add</h1>
+<input ng-model="query" placeholder="Search for locations" class="input-medium search-query form-control" >
+<hr class="m-t-1">
+
+<div class="list-group pre-scrollable">
+          
+  <li ng-repeat="item in venues | filter: query" class="list-group-item p-y-2" style="text-align: center;">
+    <div class="form-group" ng-class="{'has-success': item.userBusinessKey === item.businessKey}">
+      <h4>{{item.name}}
+        <!-- <span ng-show="item.userBusinessKey === item.businessKey">&#10004</span> -->
+      </h4>
+      <p>{{item.address}}</p>
+      <input class="form-control" type="text" placeholder="Business Key" ng-model="item.userBusinessKey" ng-hide="item.userBusinessKey === item.businessKey" required>
+    </div>
+  </li>
+          
+</div>
