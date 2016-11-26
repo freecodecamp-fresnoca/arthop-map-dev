@@ -4,13 +4,25 @@
 <div class="list-group pre-scrollable">
           
   <li ng-repeat="item in venues | filter: query" class="list-group-item p-y-2" style="text-align: center;">
-    <div class="form-group" ng-class="{'has-success': item.userBusinessKey === item.businessKey}">
+    <div class="form-group">
       <h4>{{item.name}}
         <!-- <span ng-show="item.userBusinessKey === item.businessKey">&#10004</span> -->
       </h4>
       <p>{{item.address}}</p>
-      <input class="form-control" type="text" placeholder="Business Key" ng-model="item.userBusinessKey" ng-hide="item.userBusinessKey === item.businessKey" required>
+        
+      <form name="form" ng-submit="ctrl.submitKey(item.name)">
+        <div class="input-group">
+          <input name="key" ng-model="ctrl.venue.key" type="text" class="form-control" placeholder="Example Business Key...">
+
+          <span class="input-group-btn">
+            <input class="btn btn-secondary" type="submit">Submit</input>
+          </span>
+
+        </div>
+      </form>
+
     </div>
+
   </li>
           
 </div>

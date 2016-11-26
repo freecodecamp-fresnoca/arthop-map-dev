@@ -1,7 +1,14 @@
-function AddController() {
+function AddController($http, $scope) {
   var ctrl = this;
-  //CODE
-  console.log('Spooky')
+
+  $scope.venue = {}
+
+  ctrl.submitKey = function(name) {
+    ctrl.venue.name = name
+    $http.post('/venues/verify', ctrl.venue).then(function(data) {
+      console.log(data)
+    }) 
+  }
 }
 
 angular.module('arthopMapApp').controller('AddController', AddController);

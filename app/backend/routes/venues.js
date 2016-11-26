@@ -10,4 +10,20 @@ router.get('/', (req,res,next) => {
   res.send(output)
 })
 
+router.post('/verify', (req, res, next) => {
+  // console.log(req.body);
+  /* req.body ideal look
+  { 
+    name: 'Bitwise Industries',
+    location: { lat: 123, lng: 101  },
+    business_key: 'SAMPLE KEY PHASE'  
+  }
+  */
+  let inputKey = req.body.businessKey
+  let venue = venues().find(v => {
+    return v.name === req.body.name;
+  }) 
+  res.send(venue)
+})
+
 module.exports = router
