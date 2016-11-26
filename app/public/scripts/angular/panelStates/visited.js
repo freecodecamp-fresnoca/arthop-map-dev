@@ -1,7 +1,11 @@
-function VisitedController() {
+function VisitedController($scope) {
   $.getScript("bower_components/progressbar.js/dist/progressbar.js").then(
     function(){
       var ctrl = this;
+
+      let venues = $scope.$parent.venues
+      let user = $scope.$parent.user
+
       // progress bar
       var bar = new ProgressBar.Circle(container, {
         color: '#aaa',
@@ -31,8 +35,8 @@ function VisitedController() {
       });
       bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
       bar.text.style.fontSize = '2rem';
-
-      bar.animate(0.5);  // Number from 0.0 to 1.0
+      let percentage = user.points / venues.length
+      bar.animate(percentage);  // Number from 0.0 to 1.0
      // end of progress bar
     }
 

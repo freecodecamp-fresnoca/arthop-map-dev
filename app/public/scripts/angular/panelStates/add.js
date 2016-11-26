@@ -5,8 +5,9 @@ function AddController($http, $scope) {
 
   ctrl.submitKey = function(name) {
     ctrl.venue.name = name
-    $http.post('/venues/verify', ctrl.venue).then(function(data) {
-      console.log(data)
+    $http.post('/venues/verify', ctrl.venue).then(function(res) {
+      console.log(res)
+      $scope.$parent.user.points = res.data.points
     }) 
   }
 }
