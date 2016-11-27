@@ -7,7 +7,9 @@ function AddController($http, $scope) {
     ctrl.venue.name = name
     $http.post('/venues/verify', ctrl.venue).then(function(res) {
       console.log(res)
-      $scope.$parent.user.points = res.data.points
+      if(res.data.points) {
+        $scope.$parent.user.points = res.data.points
+      }
     }) 
   }
 }
