@@ -19,6 +19,7 @@ router.get('/api/me', auth.ensureAuthenticated, function(req, res) {
     res.send(user)
   })
 })
+
 /*
  |--------------------------------------------------------------------------
   | PUT /api/me
@@ -36,6 +37,18 @@ router.put('/api/me', auth.ensureAuthenticated, function(req, res) {
     })
   })
 })
+
+router.get('/users',function(req, res) {
+  User.find({}, function(err, users) {
+    res.send({users: stripit(users)})
+  })
+})
+
+let stripit = function(users) {
+  return users.map((u) => {
+    return {name: u.displayName, points: u.points}
+  })
+}
 
 /*
  |--------------------------------------------------------------------------
