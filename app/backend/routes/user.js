@@ -74,6 +74,7 @@ router.post('/auth/google/', function(req, res) {
             if (!user) {
               return res.status(400).send({ message: 'User not found' })
             }
+            console.log(user)
             user.google = profile.sub
             user.picture = user.picture || profile.picture.replace('sz=50', 'sz=200')
             user.displayName = user.displayName || profile.name
@@ -108,6 +109,9 @@ router.post('/auth/google/', function(req, res) {
   })
 })
 
+router.get('/auth/logout', auth.ensureAuthenticated, function(req,res) {
+  console.log(req.user)
+})
 /*
  |--------------------------------------------------------------------------
  | Unlink Provider

@@ -110,18 +110,20 @@
         $scope.venues = data
       })
 
-      if($scope.isAuthenticated())
-      $http.get('/api/me').then(function (res) {
-        //console.log('user....', res)
-        $scope.user = res.data
-        $state.go('user')
-      }, function (err) {
-        console.log("Sorry couldn't retrieve user information", err)
-        $state.go('login')
-      })
+      if($scope.isAuthenticated()) {
+        $http.get('/api/me').then(function (res) {
+          //console.log('user....', res)
+          $scope.user = res.data
+          console.log(res.data)
+          $state.go('user')
+        }, function (err) {
+          console.log("Sorry couldn't retrieve user information", err)
+          $state.go('login')
+        })
+      }
 
       $scope.logout = function() {
-        $auth.unlink('google')
+        $auth.logout()
           .then(function(response) {
             $auth.removeToken()
             $state.go('login')
