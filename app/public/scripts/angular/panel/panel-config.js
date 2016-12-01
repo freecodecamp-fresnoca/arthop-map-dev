@@ -112,9 +112,8 @@
 
       if($scope.isAuthenticated()) {
         $http.get('/api/me').then(function (res) {
-          //console.log('user....', res)
           $scope.user = res.data
-          console.log(res.data)
+          console.log('user', res.data)
           $state.go('user')
         }, function (err) {
           console.log("Sorry couldn't retrieve user information", err)

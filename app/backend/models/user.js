@@ -22,7 +22,7 @@ userSchema.statics.findOrCreate = function(filters, profile, cb) {
         newUser.email = profile.emails[0].value // pull the first email
         newUser.photoURL = profile.photos[0].value
         newUser.points = 0
-        newUser.locations = ["gibberish-sample"]
+        newUser.locations = []
 
         newUser.save(function(err, doc) {
           cb(err, doc)

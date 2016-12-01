@@ -15,13 +15,18 @@ router.post('/verify', auth.ensureAuthenticated, (req, res, next) => {
   let name = Object.keys(req.body)[0];
   let inputKey = req.body[name].key
   console.log(req.body)
+
   // TODO: I will also need to check if user has already entered code for the venue
   if(venues.keyMatch(inputKey, name)) {
     //Look for current User
     User.findById(req.user, function(err, user) {
       // increase the points they have 
       user.points += 1 //We will want to do something like venue.points if we implement different points for each venue
+      console.log(name.toString())
+      user.locations.push( name.toString() ) 
+      // user.markModified('venues')
       //we have to save the user  after increasing the points
+      console.log(user)
       user.save(function(err) {
         if(err) {
           console.log("Error with saving the user", err)
@@ -29,7 +34,7 @@ router.post('/verify', auth.ensureAuthenticated, (req, res, next) => {
           res.send({text: "Sorry error with saving your points"})
         }
         // Otherwise we will send a congrats and their new point total
-        res.send({ text: "Congrats! Here's a cookie.", points: user.points })
+        res.send({ text: "Congrats! Here's a cookie.", points: user.points, user: user })
       })
     })
   } else {
