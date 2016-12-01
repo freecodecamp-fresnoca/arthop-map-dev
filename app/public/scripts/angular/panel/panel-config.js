@@ -114,7 +114,7 @@
         $http.get('/api/me').then(function (res) {
           //console.log('user....', res)
           $scope.user = res.data
-          console.log(res.data)
+          console.log("Autheticate check: ", res.data, $scope.user.locations);
           $state.go('user')
         }, function (err) {
           console.log("Sorry couldn't retrieve user information", err)
@@ -132,7 +132,7 @@
             // Handle errors here.
             console.log('Error with loggin you out.')
             $state.go('user')
-          }); 
+          });
       }
     }])
 })(window.angular);

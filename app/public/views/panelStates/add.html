@@ -1,20 +1,37 @@
+<style>
+.success {
+  background-color: #99ff99;
+}
+.success input {
+  visibility: hidden;
+  max-height: 0px;
+  margin-top: -5px;
+}
+.success h4, .success p  {
+  margin: 0px;
+}
+.success h4  {
+  font-weight: 700;
+  font-size: 2.2em;
+  margin-top: 10px;
+}
+</style>
 <input ng-model="query" placeholder="Search for locations" class="input-medium search-query form-control" >
 <hr class="m-t-1">
 <div class="list-group pre-scrollable">
-          
-  <li ng-repeat="item in venues | filter: query" class="list-group-item p-y-2" style="text-align: center;">
+
+  <li ng-repeat="item in venues | filter: query" ng-class="{'success': ctrl.visited(item.name)}" class="list-group-item p-y-2" style="text-align: center;">
     <div class="form-group">
       <h4>{{item.name}}
-        <!-- <span ng-show="item.userBusinessKey === item.businessKey">&#10004</span> -->
       </h4>
       <p>{{item.address}}</p>
-        
-      <form name="form" ng-submit="ctrl.submitKey()">
+      <span ng-show="ctrl.visited(item.name)" class="glyphicon glyphicon-ok" style="float:left; font-size: 2.2em; position: absolute; left: 1em; transform: translateY(-50%); top: 50%;"></span>
+      <form name="form" ng-submit="ctrl.submitKey(item.name)">
         <div class="input-group">
-          <input name="key" ng-model="ctrl.venue[item.name].key" type="text" class="form-control" placeholder="Example Business Key...">
+          <input name="key" ng-disabled="ctrl.visited(item.name)" ng-model="ctrl.venue[item.name].key" type="text" class="form-control" placeholder="Example Business Key...">
 
           <span class="input-group-btn">
-            <input class="btn btn-secondary" type="submit">Submit</input>
+            <input class="btn btn-secondary" ng-disabled="ctrl.visited(item.name)" type="submit">Submit</input>
           </span>
 
         </div>
@@ -23,5 +40,5 @@
     </div>
 
   </li>
-          
+
 </div>
