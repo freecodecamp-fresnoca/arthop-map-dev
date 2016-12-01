@@ -10,9 +10,9 @@
       </h4>
       <p>{{item.address}}</p>
         
-      <form name="form" ng-submit="ctrl.submitKey(item.name)">
+      <form name="form" ng-submit="ctrl.submitKey()">
         <div class="input-group">
-          <input name="key" ng-model="ctrl.venue.key" type="text" class="form-control" placeholder="Example Business Key...">
+          <input name="key" ng-model="ctrl.venue[item.name].key" type="text" class="form-control" placeholder="Example Business Key...">
 
           <span class="input-group-btn">
             <input class="btn btn-secondary" type="submit">Submit</input>

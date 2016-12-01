@@ -4,7 +4,6 @@ function AddController($http, $scope) {
   $scope.venue = {}
 
   ctrl.submitKey = function(name) {
-    ctrl.venue.name = name
     $http.post('/venues/verify', ctrl.venue).then(function(res) {
       console.log(res)
       if(res.data.points) {

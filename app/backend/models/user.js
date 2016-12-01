@@ -1,12 +1,15 @@
 const mongoose = require('mongoose')
 
 var userSchema = new mongoose.Schema({
-    displayName: String,
-    email: String,
-    picture: String,
-    points: Number,
-    google: String,
-    access_token: { type: String }
+  displayName: String,
+  email: String,
+  picture: String,
+  points: Number,
+  google: String,
+  access_token: { type: String },
+  locations: [{
+    type: String
+  }]
 });
 
 userSchema.statics.findOrCreate = function(filters, profile, cb) {
@@ -19,7 +22,7 @@ userSchema.statics.findOrCreate = function(filters, profile, cb) {
         newUser.email = profile.emails[0].value // pull the first email
         newUser.photoURL = profile.photos[0].value
         newUser.points = 0
-        // newUser.locations = ["sample","stuff"]
+        newUser.locations = ["gibberish-sample"]
 
         newUser.save(function(err, doc) {
           cb(err, doc)
