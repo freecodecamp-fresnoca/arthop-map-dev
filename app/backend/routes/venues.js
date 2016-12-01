@@ -16,7 +16,9 @@ router.post('/verify', auth.ensureAuthenticated, (req, res, next) => {
   let inputKey = req.body[name].key
 
   // TODO: I will also need to check if user has already entered code for the venue
-  if(venues.keyMatch(inputKey, name)) {
+  if( !venues.strip().includes(name) ) {
+    res.send({text: "Sorry you have already entered a code for this location"})
+  } else if( venues.keyMatch(inputKey, name)) {
     //Look for current User
     User.findById(req.user, function(err, user) {
       // increase the points they have 
