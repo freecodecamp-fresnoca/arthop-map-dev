@@ -1,6 +1,5 @@
 <input ng-model="query" placeholder="Search for locations" class="input-medium search-query form-control" >
 <hr class="m-t-1">
-
 <div class="list-group pre-scrollable">
           
   <li ng-repeat="item in venues | filter: query" class="list-group-item p-y-2" style="text-align: center;">
@@ -10,9 +9,9 @@
       </h4>
       <p>{{item.address}}</p>
         
-      <form name="form" ng-submit="ctrl.submitKey(item.name)">
+      <form name="form" ng-submit="ctrl.submitKey()">
         <div class="input-group">
-          <input name="key" ng-model="ctrl.venue.key" type="text" class="form-control" placeholder="Example Business Key...">
+          <input name="key" ng-model="ctrl.venue[item.name].key" type="text" class="form-control" placeholder="Example Business Key...">
 
           <span class="input-group-btn">
             <input class="btn btn-secondary" type="submit">Submit</input>

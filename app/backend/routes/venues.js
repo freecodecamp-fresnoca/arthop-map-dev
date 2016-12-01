@@ -12,11 +12,11 @@ router.get('/', (req,res,next) => {
 })
 
 router.post('/verify', auth.ensureAuthenticated, (req, res, next) => {
-  let inputKey = req.body.key
-  let v = req.body.name
-
+  let name = Object.keys(req.body)[0];
+  let inputKey = req.body[name].key
+  console.log(req.body)
   // TODO: I will also need to check if user has already entered code for the venue
-  if(venues.keyMatch(inputKey, v)) {
+  if(venues.keyMatch(inputKey, name)) {
     //Look for current User
     User.findById(req.user, function(err, user) {
       // increase the points they have 
