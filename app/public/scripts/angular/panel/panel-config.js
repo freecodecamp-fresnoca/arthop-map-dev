@@ -112,7 +112,6 @@
 
       if($scope.isAuthenticated()) {
         $http.get('/api/me').then(function (res) {
-          //console.log('user....', res)
           $scope.user = res.data
           console.log("Autheticate check: ", res.data, $scope.user.locations);
           $state.go('user')

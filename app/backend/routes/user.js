@@ -80,6 +80,7 @@ router.post('/auth/google/', function(req, res) {
             user.displayName = user.displayName || profile.name
             user.email = user.email || profile.email
             user.points = user.points || 0
+            user.locations = user.location || ["gibberish"]
             user.save(function() {
               var token = createJWT(user)
               res.send({ token: token })
@@ -99,6 +100,7 @@ router.post('/auth/google/', function(req, res) {
           user.displayName = profile.name
           user.email = profile.email
           user.points = 0
+          user.locations = []
           user.save(function(err) {
             var token = createJWT(user)
             res.send({ token: token })

@@ -27,9 +27,9 @@ function VisitedController($scope) {
 
           var value = Math.round(circle.value() * 100);
           if (value === 0) {
-            circle.setText('');
+            circle.setText('%');
           } else {
-            circle.setText(value);
+            circle.setText(value + '%');
           }
         }
       });
