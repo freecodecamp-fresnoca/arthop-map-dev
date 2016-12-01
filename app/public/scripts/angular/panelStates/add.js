@@ -14,7 +14,6 @@ function AddController($http, $scope) {
     })
   }
   ctrl.visited = function(name){
-    console.log('User locations: ', $scope.$parent.user.locations);
     if ($scope.$parent.user.locations.includes(name)){return true;}
     else {return false;}
   }

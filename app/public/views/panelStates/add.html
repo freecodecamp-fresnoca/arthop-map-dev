@@ -15,6 +15,30 @@
   font-size: 2.2em;
   margin-top: 10px;
 }
+input.input-medium {
+  background: #FFF;
+  font-size: 2.2rem;
+  height: 8vh;
+}
+input.input-medium:focus {
+  border-color: #12A79D;
+outline: 0;
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+input.input-medium::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 2.2rem;
+  text-align: center;
+}
+input.input-medium::-moz-placeholder { /* Firefox 19+ */
+  color: pink;
+}
+input.input-medium:-ms-input-placeholder { /* IE 10+ */
+  color: pink;
+}
+input.input-medium:-moz-placeholder { /* Firefox 18- */
+  color: pink;
+}
 </style>
 <input ng-model="query" placeholder="Search for locations" class="input-medium search-query form-control" >
 <hr class="m-t-1">
