@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta name="robots" content="NOINDEX">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+
+  <body ng-app="arthopMapApp">
+    <!-- Map initialization -->
+    <div  id="map" style="width:100%;height:100vh"></div>
+    <header class="header"><h1 class="header__title">artHpr</h1></header>
+    <search-modal></search-modal>
+    <search-button></search-button>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/progressbar.js/dist/progressbar.js"></script>
+    <script src="bower_components/satellizer/dist/satellizer.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/angular/app.js"></script>
+    <script src="scripts/angular/panelStates/add.js"></script>
+    <script src="scripts/angular/panelStates/leaderboard.js"></script>
+    <script src="scripts/angular/panelStates/user.js"></script>
+    <script src="scripts/angular/panelStates/visited.js"></script>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/googleMaps/map.js"></script>
+    <script src="scripts/angular/panel/panel-config.js"></script>
+    <script src="scripts/googleMaps/load-markers.js"></script>
+    <script src="scripts/googleMaps/styles.js"></script>
+    <!-- endbuild -->
+</body>
+</html>
