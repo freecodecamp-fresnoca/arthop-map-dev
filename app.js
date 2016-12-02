@@ -11,7 +11,7 @@ const express      = require('express'),
 let db = process.env.DB_CONN || "localhost:27017"
 
 mongoose.connect(db) 
-
+process.env.PWD = process.cwd()
 app.use('/', express.static(path.join(process.env.PWD + '/dist')))
 app.use(bodyParser.json()) 
 app.use(bodyParser.urlencoded({ extended: true  }))
