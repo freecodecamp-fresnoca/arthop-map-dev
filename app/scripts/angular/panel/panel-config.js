@@ -6,7 +6,7 @@
     $authProvider.httpInterceptor = function() { return true; },
     $authProvider.withCredentials = false;
     $authProvider.tokenRoot = null;
-    $authProvider.baseUrl = window.location.hostname
+    $authProvider.baseUrl =  '/'
     $authProvider.loginUrl = '/auth/login';
     $authProvider.unlinkUrl = '/auth/unlink/';
     $authProvider.tokenName = 'token';
