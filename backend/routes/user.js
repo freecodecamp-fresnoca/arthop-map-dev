@@ -6,7 +6,8 @@ const express = require('express'),
       passport   = require('passport'),
       GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
       jwt            = require('jwt-simple'),
-      request        = require('request')
+      request        = require('request'),
+      TOKEN_SECRET = "secrit secrit"
 /*
  |--------------------------------------------------------------------------
  | GET /api/me
@@ -65,18 +66,21 @@ router.post('/auth/google/', function(req, res) {
     redirect_uri: googleAuth.callbackURL,
     grant_type: 'authorization_code'
   };
-
+  console.log(params)
   // Step 1. Exchange authorization code for access token.
   request.post(accessTokenUrl, { json: true, form: params }, function(err, response, token) {
     var accessToken = token.access_token
     var headers = { Authorization: 'Bearer ' + accessToken }
+    console.log("INSIDE REQUEST.POST!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     // Step 2. Retrieve profile information about the current user.
     request.get({ url: peopleApiUrl, headers: headers, json: true }, function(err, response, profile) {
+      console.log("INSIDE OF REQUEST.GET<!<!<!<!<!<!<<!<!<!<!<!<!<!<<!<")
       if (profile.error) {
         return res.status(500).send({message: profile.error.message})
       }
       // Step 3a. Link user accounts.
       if (req.header('Authorization')) {
+        console.log("INSIDE LOOKING FOR USER=========================================")
         User.findOne({ google: profile.sub }, function(err, existingUser) {
           if (existingUser) {
             return res.status(409).send({ message: 'There is already a Google account that belongs to you' })
