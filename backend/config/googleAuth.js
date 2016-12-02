@@ -1,6 +1,6 @@
 let secrets = {
   clientID: process.env.clientID,
   clientSecret: process.env.clientSecret,
-  callbackURL: process.env.IP || 'http://localhost:3333'
+  callbackURL: "https://arthop.herokuapp.com" || 'http://localhost:3333'
 }
 module.exports = secrets
