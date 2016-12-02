@@ -21,7 +21,7 @@ app.use(morgan('dev'))
 app.use('/venues', venues)
 app.use(user)
 
-let server = app.listen(env.process.PORT || 3333, function(){
+let server = app.listen(process.env.PORT || 3333, function(){
    console.log("ArtHop backend server started.")
 })
 
