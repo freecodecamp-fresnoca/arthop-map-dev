@@ -2,7 +2,8 @@
   "name": "arthopmap",
   "private": true,
   "engines": {
-    "node": "6.4.0"
+    "node": "6.4.0",
+    "npm": "3.10.3"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
