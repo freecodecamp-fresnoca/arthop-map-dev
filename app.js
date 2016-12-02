@@ -8,9 +8,11 @@ const express      = require('express'),
     user           = require('./backend/routes/user.js')
     path           = require('path')
 
-mongoose.connect("localhost:27017") 
+let db = process.env.DB_CONN || "localhost:27017"
 
-app.use('/', express.static(path.join(__dirname, 'app')))
+mongoose.connect(db) 
+
+app.use('/', express.static(path.join(__dirname, 'dist')))
 app.use(bodyParser.json()) 
 app.use(bodyParser.urlencoded({ extended: true  }))
 app.use(methodOverride('_method')) 

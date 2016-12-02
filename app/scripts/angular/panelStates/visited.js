@@ -1,5 +1,5 @@
 function VisitedController($scope) {
-  $.getScript("bower_components/progressbar.js/dist/progressbar.js").then(
+  $.getScript("progressbar.js/dist/progressbar.js").then(
     function(){
       var ctrl = this;
 
