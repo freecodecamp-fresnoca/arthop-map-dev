@@ -1,0 +1,10 @@
+<div class="menuButton" ng-if="isAuthenticated()">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#searchIt" ui-sref="user">
+    &#9776
+  </button>
+</div>
+<div class="menuButton" ng-if="!isAuthenticated()">
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#searchIt" ui-sref="login">
+    &#9776
+  </button>
+</div>

@@ -1,0 +1,60 @@
+<!--make search input in modal autofocus-->
+<!--optimize search filter-->
+<style type="text/css">
+  .validated {
+    background-color: #99ff99;
+  }
+  .modal-header .glyphicon {
+    color: white;
+    background: rgba(255,255,255,.2);
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.8em;
+  }
+
+</style>
+<!-- Modal -->
+  <div class="modal fade" id="searchIt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+
+          <div ng-if="isAuthenticated()">
+            <strong>
+              <a ui-sref="user">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+              <a ui-sref="leaderboard">
+                <span class="glyphicon glyphicon-tower" aria-hidden="true"></span></a>
+              </a>
+              <a ui-sref="visited">
+                <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span></a>
+              </a>
+              <a ui-sref="add">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+              </a>
+              <a href="#" ng-click="logout()">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
+              </a>
+            </strong>
+          </div>
+          <div ng-if="!isAuthenticated()">
+            <a ui-sref="login" ui-sref-active="active">Log In</a>
+          </div>
+        </h4>
+      </div>
+      <div class="modal-body">
+<!-- BODY -->
+ <ui-view></ui-view>
+
+
+
+      </div>
+      <hr>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
