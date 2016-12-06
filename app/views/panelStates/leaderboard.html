@@ -7,9 +7,9 @@ td{
 
 <h1 style="text-align:center;">Leaderboard</h1><hr>
 <table>
-    <tr class="table-row" ng-repeat="current in ctrl.userslist | orderBy:'-score'">
+    <tr class="table-row" ng-repeat="current in ctrl.users | orderBy:'-points'">
        <td>{{$index + 1}}</td>
-       <td>{{current.displayName}}</td>
-       <td>{{current.score}}</td>
+       <td>{{current.name}}</td>
+       <td>{{current.points}}</td>
     </tr>
 </table>
