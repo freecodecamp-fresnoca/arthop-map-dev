@@ -120,6 +120,10 @@
         })
       }
 
+      navigator.geolocation.getCurrentPosition(function(location) {
+        $scope.userLocation = location
+      })
+
       $scope.logout = function() {
         $auth.logout()
           .then(function(response) {
