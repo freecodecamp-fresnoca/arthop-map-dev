@@ -4,9 +4,7 @@ function AddController($http, $scope) {
   $scope.venue = {}
 
   ctrl.submitKey = function(venue) {
-    // console.log($scope.$parent.userLocation)
-    var v = nearby(venue, $scope.$parent.userLocation)
-    if(v && navigator.geolocation) {
+    if(nearby(venue, $scope.$parent.userLocation) && navigator.geolocation) {
       $http.post('/venues/verify', ctrl.venue).then(function(res) {
         if(res.data.points) {
           $scope.$parent.user.points = res.data.points
