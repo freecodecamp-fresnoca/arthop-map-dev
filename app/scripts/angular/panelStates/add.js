@@ -28,8 +28,7 @@ function AddController($http, $scope) {
 angular.module('arthopMapApp').controller('AddController', AddController);
 
 function deg2rad(deg) {
-  rad = deg * Math.PI/180; // radians = degrees * pi/180
-  return rad;
+  return deg * Math.PI/180; // radians = degrees * pi/180
 }
 
 
