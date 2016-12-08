@@ -50,7 +50,7 @@ input.input-medium:-moz-placeholder { /* Firefox 18- */
       </h4>
       <p>{{item.address}}</p>
       <span ng-show="ctrl.visited(item.name)" class="glyphicon glyphicon-ok" style="float:left; font-size: 2.2em; position: absolute; left: 1em; transform: translateY(-50%); top: 50%;"></span>
-      <form name="form" ng-submit="ctrl.submitKey(item.name)">
+      <form name="form" ng-submit="ctrl.submitKey(item)">
         <div class="input-group">
           <input name="key" ng-disabled="ctrl.visited(item.name)" ng-model="ctrl.venue[item.name].key" type="text" class="form-control" placeholder="Example Business Key...">
 
