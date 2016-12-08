@@ -39,10 +39,9 @@ function round(x) {
 }
 
 function nearby(venue, userLocation) {
-  var mi, km;
+  var mi;
   var t1, n1, t2, n2, lat1, lon1, lat2, lon2, dlat, dlon, a, c, dm, dk
   var Rm = 3961; // mean radius of the earth (miles) at 39 degrees from the equat
-  var Rk = 6373; // mean radius of the earth (km) at 39 degrees from the equator
 
   t1 = userLocation.coords.latitude
   t2 = venue.location.lat
@@ -62,11 +61,9 @@ function nearby(venue, userLocation) {
   a  = Math.pow(Math.sin(dlat/2),2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon/2),2);
   c  = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a)); // great circle distance in radians
   dm = c * Rm; // great circle distance in miles
-  dk = c * Rk; // great circle distance in km
   
   // round the results down to the nearest 1/1000
   mi = round(dm);
-  km = round(dk); 
 
   return mi < 0.085 
 }
