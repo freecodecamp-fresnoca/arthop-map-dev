@@ -1,4 +1,4 @@
-function AddController($http, $scope) {
+function AddController($http, $scope, $timeout, $state) {
   var ctrl = this;
 
   $scope.venue = {}
@@ -10,6 +10,9 @@ function AddController($http, $scope) {
           $scope.$parent.user.points = res.data.points
           $scope.$parent.user.locations.push(venue.name);
           console.log($scope.$parent.user.locations);
+          $timeout(function () {
+            $state.go('visited');
+          }, 2000);
         } else {
           console.log("Sorry wrong code.")
         }
@@ -51,18 +54,18 @@ function nearby(venue, userLocation) {
   lon1 = deg2rad(n1);
   lat2 = deg2rad(t2);
   lon2 = deg2rad(n2);
-  
+
   // find the differences between the coordinates
   dlat = lat2 - lat1;
   dlon = lon2 - lon1;
-  
+
   // here's the heavy lifting
   a  = Math.pow(Math.sin(dlat/2),2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon/2),2);
   c  = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a)); // great circle distance in radians
   dm = c * Rm; // great circle distance in miles
-  
+
   // round the results down to the nearest 1/1000
   mi = round(dm);
 
-  return mi < 0.085 
+  return mi < 0.085
 }
